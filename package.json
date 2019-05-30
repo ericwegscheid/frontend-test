@@ -1,0 +1,33 @@
+{
+  "name": "frontend-test",
+  "version": "1.0.0",
+  "description": "Frontend test for Superformula",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hot",
+    "build": "webpack --mode production"
+  },
+  "author": "Eric Wegscheid",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "axios": "0.18.0",
+    "babel-loader": "8.0.6",
+    "body-parser": "1.19.0",
+    "express": "4.17.1",
+    "html-webpack-plugin": "3.2.0",
+    "prompt-sync": "4.1.6",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "7.0.3",
+    "redux": "4.0.1",
+    "redux-devtools-extension": "2.13.8",
+    "redux-thunk": "2.3.0",
+    "request": "2.88.0",
+    "webpack": "4.32.2",
+    "webpack-cli": "3.3.2",
+    "webpack-dev-server": "3.4.1"
+  }
+}
