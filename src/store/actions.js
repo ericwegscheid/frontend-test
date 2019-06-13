@@ -12,9 +12,15 @@ export function fetchDataTest() {
 
   return (dispatch) => {
     return request.then((data) => {
-      dispatch({ type: 'FETCH_RANDOM_USER', payload: data})
+      dispatch({
+        type: 'FETCH_RESTAURANTS',
+        payload: data
+      })
     }).catch((error) => {
-      dispatch({ type: 'FETCH_ERROR' })
+      dispatch({
+        type: 'FETCH_RESTAURANTS_ERROR',
+        payload: error
+      })
     })
   }
 }

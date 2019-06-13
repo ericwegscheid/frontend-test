@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { initialize, fetchDataTest } from '../../store/ducks/app'
-import { AppComponent } from './component'
+import { initialize, fetchDataTest } from '../../store'
+import { MainViewComponent } from './component'
 
 const mapStateToProps = state => ({
-  ...state.app
+  ...state
 })
 
 const mapDispatchToProps = dispatch => {
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-export const App = connect(mapStateToProps, mapDispatchToProps)(AppComponent)
+export const MainView = connect(mapStateToProps, mapDispatchToProps)(MainViewComponent)

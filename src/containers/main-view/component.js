@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-export class AppComponent extends Component {
+export class MainViewComponent extends Component {
   constructor(props) {
     super(props)
 
@@ -25,12 +25,13 @@ export class AppComponent extends Component {
     const { title, data } = this.props
 
     return (<div>
-      { this.state.isFetching &&
-        <h1>fetching...</h1> ||
-        <Fragment>
-          <h1>{title}</h1>
-          <pre>{data}</pre>
-        </Fragment>
+      {
+        this.state.isFetching
+          ? <h1>fetching...</h1>
+          : <Fragment>
+              <h1>{title}</h1>
+              <pre>{data}</pre>
+            </Fragment>
       }
       <button onClick={this.handleOnClick.bind(this)}>Get some more data</button>
     </div>

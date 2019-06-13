@@ -1,16 +1,12 @@
 const initialState = {
-  title: 'this is a test',
-  user: null
+  title: 'Restaurants',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 }
 
 export const reducer = (state = initialState, action) => {
-  console.log(action.payload)
-
   switch(action.type) {
-    case 'INITIALIZE':
-    case 'FETCH_RANDOM_USER':
-      console.log(action.payload)
-
+    case 'FETCH_RESTAURANTS':
+    case 'FETCH_RESTAURANTS_ERROR':
       return {
         ...state,
         data: JSON.stringify(action.payload)
