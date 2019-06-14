@@ -33,7 +33,7 @@ export class MainViewComponent extends Component {
               <pre>{data}</pre>
             </Fragment>
       }
-      <button onClick={this.handleOnClick.bind(this)}>Get some more data</button>
+      <button className="primary" onClick={this.handleOnClick.bind(this)}>Get some more data</button>
     </div>
   )}
 }

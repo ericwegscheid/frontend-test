@@ -1,0 +1,38 @@
+body {
+  background: @white;
+  color: @gray2;
+  font-family: Helvetica Neue, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: @gray1;
+}
+
+button {
+  text-transform: uppercase;
+  text-align: center;
+  border-color: @primary;
+  border-radius: 2px;
+  border-width: 1px;
+  height: 46px;
+
+  &.primary {
+    background: @primary;
+    color: @white;
+
+    &.disabled {
+      background: @gray6;
+      border-color: @gray6;
+    }
+  }
+
+  &.secondary {
+    background: @white;
+    color: @primary;
+
+    &.disabled {
+      border-color: @gray6;
+      color: @gray4;
+    }
+  }
+}

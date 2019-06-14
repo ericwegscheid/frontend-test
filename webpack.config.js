@@ -60,6 +60,15 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "less-loader"
+        ]
       }
     ]
   },
@@ -67,5 +76,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
-  ]
+  ],
 };
