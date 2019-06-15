@@ -4,13 +4,13 @@ import { initialize, fetchRestaurants } from '../../store'
 import { MainViewComponent } from './component'
 
 const mapStateToProps = state => ({
-  ...state
+  ...state,
 })
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
     initialize,
-    fetchRestaurants
+    fetchRestaurants,
   }, dispatch)
 }
 

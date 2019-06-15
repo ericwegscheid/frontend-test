@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import './styles.less'
+import './styles'
 
 export class MainViewComponent extends Component {
   constructor(props) {

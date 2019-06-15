@@ -24,6 +24,9 @@ if (!token) {
 module.exports = {
   entry: './src/index.jsx',
   mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx', '.less']
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -51,15 +54,21 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { useBuiltIns: "entry" }],
-              ['@babel/preset-react']
-            ]
-          }
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', { useBuiltIns: "entry" }],
+                ['@babel/preset-react']
+              ]
+            }
+          },
+// @TODO this is not working as expected
+//           {
+//             loader: 'eslint-loader',
+//           }
+        ]
       },
       {
         test: /\.less$/,

@@ -1,7 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { MainView } from '../../components/main-view'
-import './styles.less'
+import './styles'
 
-export function App() {
-  return <MainView />
+export class AppComponent extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return <MainView />
+  }
 }

@@ -1,1 +1,2 @@
-export * from './component.jsx'
+export * from './component'
+export * from './provider'
