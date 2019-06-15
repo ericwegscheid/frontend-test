@@ -1,4 +1,9 @@
+# exclude directories
 node_modules
 dist
+
+# stored api token
 .token
+
+# progress notes
 TODO.md

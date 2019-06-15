@@ -22,7 +22,7 @@ if (!token) {
 }
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -49,7 +49,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',

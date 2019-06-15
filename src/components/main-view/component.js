@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import './styles.less'
 
 export class MainViewComponent extends Component {
   constructor(props) {
@@ -16,21 +17,21 @@ export class MainViewComponent extends Component {
   handleOnClick() {
     this.setState({ isFetching: true })
 
-    this.props.fetchDataTest().then(() => {
+    this.props.fetchRestaurants().then(() => {
       this.setState({ isFetching: false })
     })
   }
 
   render() {
-    const { title, data } = this.props
+    const { title, description, data } = this.props
 
     return (<div>
       {
         this.state.isFetching
           ? <h1>fetching...</h1>
           : <Fragment>
-              <h1>{title}</h1>
-              <pre>{data}</pre>
+              <h1 className="title">{title}</h1>
+              <p className="description">{description}</p>
             </Fragment>
       }
       <button className="primary" onClick={this.handleOnClick.bind(this)}>Get some more data</button>

@@ -1,11 +1,21 @@
+@import './global.less';
+
 body {
   background: @white;
   color: @gray2;
-  font-family: Helvetica Neue, sans-serif;
+  font-family: @primaryFont;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  padding: 36px 48px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: @gray1;
+  font-weight: normal;
+  margin: 0;
 }
 
 button {
