@@ -64,10 +64,9 @@ module.exports = {
               ]
             }
           },
-// @TODO this is not working as expected
-//           {
-//             loader: 'eslint-loader',
-//           }
+          {
+            loader: 'eslint-loader',
+          }
         ]
       },
       {

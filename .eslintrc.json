@@ -19,6 +19,16 @@
     "react"
   ],
   "rules": {
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "ignore"
+      }
+    ],
     "indent": [
       "error",
       2
@@ -27,6 +37,12 @@
       "error",
       "unix"
     ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all"
+      }
+    ],
     "quotes": [
       "error",
       "single"
@@ -34,13 +50,6 @@
     "semi": [
       "error",
       "never"
-    ],
-    "comma-dangle": [
-      "error",
-      {
-        "arrays": "always",
-        "objects": "always"
-      }
     ]
   }
 }

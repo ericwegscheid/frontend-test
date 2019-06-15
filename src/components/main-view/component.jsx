@@ -5,9 +5,7 @@ export class MainViewComponent extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      isFetching: true
-    }
+    this.state = {isFetching: true}
 
     this.props.initialize().then(() => {
       this.setState({ isFetching: false })
@@ -30,11 +28,17 @@ export class MainViewComponent extends Component {
         this.state.isFetching
           ? <h1>fetching...</h1>
           : <Fragment>
-              <h1 className="title">{title}</h1>
-              <p className="description">{description}</p>
-            </Fragment>
+            <h1 className="title">{title}</h1>
+            <p className="description">{description}</p>
+          </Fragment>
       }
-      <button className="primary" onClick={this.handleOnClick.bind(this)}>Get some more data</button>
+      <button
+        className="primary"
+        onClick={this.handleOnClick.bind(this)}
+      >
+        Get some more data
+      </button>
     </div>
-  )}
+    )
+  }
 }

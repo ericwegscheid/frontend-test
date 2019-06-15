@@ -4,9 +4,8 @@
   "description": "Frontend test for Superformula",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot",
-    "build": "webpack --mode production",
-    "lint": "eslint ./src"
+    "dev": "webpack-dev-server --mode development --hot",
+    "build": "webpack --mode production"
   },
   "author": "Eric Wegscheid",
   "license": "MIT",
