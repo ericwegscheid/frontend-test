@@ -21,13 +21,13 @@ export class MainViewComponent extends Component {
   }
 
   render() {
-    const { title, description, data } = this.props
+    const { title, description } = this.props
 
     return (<div>
       {
-        this.state.isFetching
-          ? <h1>fetching...</h1>
-          : <Fragment>
+        this.state.isFetching ?
+          <h1>fetching...</h1> :
+          <Fragment>
             <h1 className="title">{title}</h1>
             <p className="description">{description}</p>
           </Fragment>
