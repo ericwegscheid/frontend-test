@@ -10,6 +10,7 @@ export class MainViewComponent extends Component {
     this.state = {isFetching: true}
 
     this.props.initialize().then(() => {
+      this.props.setPopularCategories(props.categoryLimit)
       this.setState({ isFetching: false })
     })
   }

@@ -13,12 +13,21 @@ export function getUrl(filter) {
     `${businessesEndpoint}/search?`,
     map(
       { ...query, ...filter },
-      (v, k) => `${v}=${k}`).join('&'),
+      (v, k) => `${k}=${v}`).join('&'),
   ].join('')
 }
 
 export function initialize() {
   return fetchRestaurants()
+}
+
+export function setPopularCategories(limit) {
+  return dispatch => {
+    dispatch({
+      type: 'SET_CATEGORIES',
+      payload: limit,
+    })
+  }
 }
 
 export function fetchRestaurants(filter) {

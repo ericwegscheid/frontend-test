@@ -1,40 +1,105 @@
+import { each, get, orderBy, slice } from 'lodash'
+
 const initialState = {
   mainView: {
     title: 'Restaurants',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    isFetchingRestaurants: false,
+    restaurants: null,
   },
-  isFetchingRestaurants: false,
-  isFetchingRestaurantDetails: false,
+  detailView: {
+    title: null,
+    isFetchingRestaurantDetails: false,
+    restaurantDetails: null,
+  },
   filter: {
     isOpen: null,
     price: null,
     category: null,
+    popularCategories: null,
   },
+}
+
+export const getPopularCategories = (restaurants, limit) => {
+  let categoriesMap = {}
+
+  each(restaurants, restaurant => {
+    each(restaurant.categories, category => {
+      const { alias, title } = category
+
+      if (!categoriesMap[alias]) {
+        categoriesMap[alias] = {
+          title: title,
+          count: 1,
+        }
+      } else {
+        categoriesMap[alias].count++
+      }
+    })
+  })
+
+  let categoriesArray = []
+
+  each(categoriesMap, (v, k) => {
+    categoriesArray.push({
+      alias: k,
+      ...v,
+    })
+  })
+
+  return slice(orderBy(categoriesArray, 'count', 'desc'), 0, limit)
 }
 
 export const reducer = (state = initialState, action) => {
   switch(action.type) {
+  case 'SET_CATEGORIES':
+    return {
+      ...state,
+      filter: {
+        ...state.filter,
+        popularCategories: getPopularCategories(
+          get(state, 'mainView.restaurants'),
+          action.payload,
+        ),
+      },
+    }
   case 'FETCH_RESTAURANTS':
     return {
       ...state,
-      isFetchingRestaurants: true,
+      mainView: {
+        ...state.mainView,
+        restaurants: get(action, 'payload.data.businesses'),
+        isFetchingRestaurants: true,
+      },
     }
   case 'FETCH_RESTAURANTS_ERROR':
     return {
       ...state,
-      isFetchingRestaurants: false,
-      data: JSON.stringify(action.payload),
+      mainView: {
+        ...state.mainView,
+        restaurants: null,
+        isFetchingRestaurants: false,
+        error: action.payload,
+      },
     }
   case 'FETCH_RESTAURANT_DETAILS':
     return {
       ...state,
-      isFetchingRestaurantDetails: true,
+      detailView: {
+        ...state.detailView,
+        restaurantDetails: action.payload,
+        isFetchingRestaurantDetails: true,
+      },
     }
   case 'FETCH_RESTAURANT_DETAILS_ERROR':
     return {
       ...state,
-      isFetchingRestaurants: false,
-      data: JSON.stringify(action.payload),
+      detailView: {
+        ...state.detailView,
+        restaurantDetails: action.payload,
+        isFetchingRestaurantDetails: false,
+        error: action.payload,
+      },
     }
   default:
     return state

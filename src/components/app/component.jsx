@@ -8,6 +8,6 @@ export class AppComponent extends Component {
   }
 
   render() {
-    return <MainView />
+    return <MainView categoryLimit={10} />
   }
 }
