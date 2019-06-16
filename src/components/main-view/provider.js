@@ -4,7 +4,7 @@ import { initialize, fetchRestaurants } from '../../store'
 import { MainViewComponent } from './component'
 
 const mapStateToProps = state => ({
-  ...state,
+  ...state.mainView,
 })
 
 const mapDispatchToProps = dispatch => {

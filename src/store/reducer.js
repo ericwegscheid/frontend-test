@@ -1,8 +1,15 @@
 const initialState = {
-  title: 'Restaurants',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  mainView: {
+    title: 'Restaurants',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
   isFetchingRestaurants: false,
   isFetchingRestaurantDetails: false,
+  filter: {
+    isOpen: null,
+    price: null,
+    category: null,
+  },
 }
 
 export const reducer = (state = initialState, action) => {

@@ -3,32 +3,37 @@ import { map } from 'lodash'
 
 const businessesEndpoint = 'http://localhost:9000/api/v3/businesses'
 
+const query = {
+  term: 'restaurants',
+  location: 'Las Vegas',
+}
+
+export function getUrl(filter) {
+  return [
+    `${businessesEndpoint}/search?`,
+    map(
+      { ...query, ...filter },
+      (v, k) => `${v}=${k}`).join('&'),
+  ].join('')
+}
+
 export function initialize() {
   return fetchRestaurants()
 }
 
 export function fetchRestaurants(filter) {
-  let query = {
-    term: 'restaurants',
-    location: 'Las Vegas',
-    ...filter,
-  }
-
   const request = axios({
     method: 'get',
-    url: [
-      `${businessesEndpoint}/search?`,
-      map(query, (v, k) => `${v}=${k}`).join('&'),
-    ].join(''),
+    url: getUrl(filter),
   })
 
-  return (dispatch) => {
-    return request.then((data) => {
+  return dispatch => {
+    return request.then(data => {
       dispatch({
         type: 'FETCH_RESTAURANTS',
         payload: data,
       })
-    }).catch((error) => {
+    }).catch(error => {
       dispatch({
         type: 'FETCH_RESTAURANTS_ERROR',
         payload: error,
@@ -43,13 +48,13 @@ export function fetchRestaurantDetails(id) {
     url: `${businessesEndpoint}/${id}`,
   })
 
-  return (dispatch) => {
-    return request.then((data) => {
+  return dispatch => {
+    return request.then(data => {
       dispatch({
         type: 'FETCH_RESTAURANT_DETAILS',
         payload: data,
       })
-    }).catch((error) => {
+    }).catch(error => {
       dispatch({
         type: 'FETCH_RESTAURANT_DETAILS_ERROR',
         payload: error,

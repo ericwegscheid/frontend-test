@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+// import { Filter } from '../filter'
+import { Row } from '../shared'
 import './styles'
 
 export class MainViewComponent extends Component {
@@ -22,23 +24,19 @@ export class MainViewComponent extends Component {
 
   render() {
     const { title, description } = this.props
+    const rowStyles = {
+      borderTopWidth: '1px',
+      borderBottomWidth: '1px',
+      borderStyle: 'solid',
+    }
 
-    return (<div>
-      {
-        this.state.isFetching ?
-          <h1>fetching...</h1> :
-          <Fragment>
-            <h1 className="title">{title}</h1>
-            <p className="description">{description}</p>
-          </Fragment>
-      }
-      <button
-        className="primary"
-        onClick={this.handleOnClick.bind(this)}
-      >
-        Get some more data
-      </button>
-    </div>
-    )
+    return <Fragment>
+      <Row>
+        <h1 className="title">{title}</h1>
+        <p className="description">{description}</p>
+      </Row>
+      <Row style={rowStyles}>
+      </Row>
+    </Fragment>
   }
 }

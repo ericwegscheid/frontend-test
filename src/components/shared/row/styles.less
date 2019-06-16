@@ -1,0 +1,20 @@
+@import '../../../styles/global.less';
+
+.row {
+  width: 100%;
+  border-top-color: @gray6;
+  border-bottom-color: @gray6;
+  border-left-width: 0;
+  border-right-width: 0;
+
+  .row-content {
+    margin: 0 auto;
+    max-width: @largeView;
+
+    .responsive(@largeView * 1.1, {
+      width: 90%;
+    });
+  }
+}
+
+

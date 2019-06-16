@@ -1,0 +1,43 @@
+@import '../../styles/global.less';
+
+.filter {
+  border-top: 1px solid @gray6;
+  border-bottom: 1px solid @gray6;
+
+  .filter-label {
+  }
+}
+
+.control {
+  border-bottom: 1px solid @gray4;
+  padding-bottom: 6px;
+  margin: 29px 32px 26px 0;
+  position: relative;
+
+  > * {
+    float: left;
+  }
+
+  .label {
+    color: @primary;
+  }
+
+  .radio-bottom {
+    margin: 1px 8px 0 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 1px solid @gray4;
+
+    &.active:before {
+      content: '';
+      background: @primary;
+      width: 8px;
+      height: 8px;
+      padding: 8px;
+      border-radius: 4px;
+      position: absolute;
+    }
+  }
+}
+
