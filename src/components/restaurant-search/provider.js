@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { initialize, fetchRestaurants, setPopularCategories } from '../../store'
-import { MainViewComponent } from './component'
+import { RestaurantSearchComponent } from './component'
 
 const mapStateToProps = state => ({
   ...state.mainView,
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-export const MainView = connect(mapStateToProps, mapDispatchToProps)(MainViewComponent)
+export const RestaurantSearch = connect(mapStateToProps, mapDispatchToProps)(RestaurantSearchComponent)

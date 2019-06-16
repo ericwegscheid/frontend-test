@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class DetailComponent extends Component {
+export class RestaurantDetailsComponent extends Component {
   constructor(props) {
     super(props)
   }

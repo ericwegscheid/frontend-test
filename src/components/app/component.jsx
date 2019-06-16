@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MainView } from '../../components/main-view'
+import { RestaurantSearch } from '../../components/restaurant-search'
 import './styles'
 
 export class AppComponent extends Component {
@@ -8,6 +8,6 @@ export class AppComponent extends Component {
   }
 
   render() {
-    return <MainView categoryLimit={10} />
+    return <RestaurantSearch categoryLimit={10} />
   }
 }

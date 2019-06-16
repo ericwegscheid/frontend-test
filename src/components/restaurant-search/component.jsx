@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import { Row } from '../shared'
 import './styles'
 
-export class MainViewComponent extends Component {
+export class RestaurantSearchComponent extends Component {
   constructor(props) {
     super(props)
 
