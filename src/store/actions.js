@@ -9,6 +9,7 @@ const query = {
 }
 
 export function getUrl(filter) {
+  console.log(filter)
   return [
     `${businessesEndpoint}/search?`,
     map(
@@ -37,9 +38,13 @@ export function fetchRestaurants(filter) {
   })
 
   return dispatch => {
+    dispatch({
+      type: 'FETCH_RESTAURANTS',
+    })
+
     return request.then(data => {
       dispatch({
-        type: 'FETCH_RESTAURANTS',
+        type: 'RECEIVED_RESTAURANTS',
         payload: data,
       })
     }).catch(error => {
@@ -58,9 +63,13 @@ export function fetchRestaurantDetails(id) {
   })
 
   return dispatch => {
+    dispatch({
+      type: 'FETCH_RESTAURANT_DETAILS',
+    })
+
     return request.then(data => {
       dispatch({
-        type: 'FETCH_RESTAURANT_DETAILS',
+        type: 'RECEIVED_RESTAURANT_DETAILS',
         payload: data,
       })
     }).catch(error => {

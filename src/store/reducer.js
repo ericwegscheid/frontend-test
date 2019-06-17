@@ -68,8 +68,16 @@ export const reducer = (state = initialState, action) => {
       ...state,
       mainView: {
         ...state.mainView,
-        restaurants: get(action, 'payload.data.businesses'),
         isFetchingRestaurants: true,
+      },
+    }
+  case 'RECEIVED_RESTAURANTS':
+    return {
+      ...state,
+      mainView: {
+        ...state.mainView,
+        restaurants: get(action, 'payload.data.businesses'),
+        isFetchingRestaurants: false,
       },
     }
   case 'FETCH_RESTAURANTS_ERROR':
@@ -87,8 +95,16 @@ export const reducer = (state = initialState, action) => {
       ...state,
       detailView: {
         ...state.detailView,
-        restaurantDetails: action.payload,
         isFetchingRestaurantDetails: true,
+      },
+    }
+  case 'RECEIVED_RESTAURANT_DETAILS':
+    return {
+      ...state,
+      detailView: {
+        ...state.detailView,
+        restaurantDetails: action.payload,
+        isFetchingRestaurantDetails: false,
       },
     }
   case 'FETCH_RESTAURANT_DETAILS_ERROR':

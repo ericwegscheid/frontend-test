@@ -8,36 +8,56 @@ export class FilterComponent extends Component {
     super(props)
 
     this.state = {
-      isOpen: props.isOpen,
+      isOpen: !!props.isOpen,
       price: props.price,
       category: props.category,
     }
   }
 
-  onClickOpenNow() {
-    this.setState(state => ({
-      isOpen: !state.isOpen,
-    }))
+  applyFilter() {
+    const { isOpen, price, category } = this.state
+
+    this.props.fetchRestaurants({
+      open_now: isOpen,
+      price: price,
+      categories: category,
+    })
   }
 
-  onSelectPrice(price) {
-    this.setState({
+  async onClickOpenNow() {
+    await this.setState(state => {
+      return {
+        isOpen: !state.isOpen,
+      }
+    })
+
+    this.applyFilter()
+  }
+
+  async onSelectPrice(price) {
+    await this.setState({
       price: price,
     })
+
+    this.applyFilter()
   }
 
-  onSelectCategory(category) {
-    this.setState({
+  async onSelectCategory(category) {
+    await this.setState({
       category: category,
     })
+
+    this.applyFilter()
   }
 
-  onClickClearAll() {
-    this.setState(state => ({
+  async onClickClearAll() {
+    await this.setState({
       isOpen: null,
       price: null,
       category: null,
-    }))
+    })
+
+    this.applyFilter()
   }
 
   getCategoryOptions() {
@@ -73,7 +93,7 @@ export class FilterComponent extends Component {
       />
       <SelectBox
         label="Price"
-        options={{all: 'All', $: '$', $$: '$$', $$$: '$$$', $$$$: '$$$$'}}
+        options={{'all': 'All', '1': '$', '2': '$$', '3': '$$$', '4': '$$$$'}}
         onSelectItem={this.onSelectPrice.bind(this)}
         selected={hasNoFilter ? 'all' : price || 'all'}
       />

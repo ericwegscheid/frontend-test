@@ -7,20 +7,13 @@ export class RestaurantSearchComponent extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {isFetching: true}
-
     this.props.initialize().then(() => {
       this.props.setPopularCategories(props.categoryLimit)
-      this.setState({ isFetching: false })
     })
   }
 
   handleOnClick() {
-    this.setState({ isFetching: true })
-
-    this.props.fetchRestaurants().then(() => {
-      this.setState({ isFetching: false })
-    })
+    this.props.fetchRestaurants()
   }
 
   render() {
@@ -42,7 +35,7 @@ export class RestaurantSearchComponent extends Component {
       </Row>
       <Row>
         {
-          this.state.isFetching ?
+          this.props.isFetchingRestaurants ?
             <Spinner /> :
             <pre>{JSON.stringify(restaurants)}</pre>
         }
