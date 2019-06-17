@@ -6,11 +6,25 @@ export class FilterComponent extends Component {
   constructor(props) {
     super(props)
 
-    this.onClickHandler.bind(this)
+    this.state = {
+      isOpen: props.isOpen,
+      price: props.price,
+      category: props.category,
+    }
   }
 
-  onClickHandler(e) {
-    console.log(e)
+  onClickOpenNow() {
+    this.setState(state => ({
+      isOpen: !state.isOpen,
+    }))
+  }
+
+  onClickClearAll(e) {
+    this.setState(state => ({
+      isOpen: null,
+      price: null,
+      category: null,
+    }))
   }
 
   render() {
@@ -19,11 +33,21 @@ export class FilterComponent extends Component {
       width: '10%',
     }
 
+    const hasNoFilter =
+      !this.state.isOpen &&
+      !this.state.price &&
+      !this.state.category
+
     return <div className="filter">
       <label>Filter by:</label>
+      <RadioButton
+        label="Open Now"
+        isActive={!hasNoFilter}
+        onClick={this.onClickOpenNow.bind(this)}
+      />
       <Button
-        className="secondary small disabled"
-        onClick={this.onClickHandler}
+        className={`secondary small ${hasNoFilter ? 'disabled' : ''}`}
+        onClick={this.onClickClearAll.bind(this)}
         style={clearButtonStyles}
       >
         CLEAR ALL
