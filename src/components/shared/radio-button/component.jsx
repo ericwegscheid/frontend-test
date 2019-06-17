@@ -23,7 +23,7 @@ export class RadioButton extends Component {
     return shouldUpdate
   }
 
-  onClickHandler() {
+  onClick() {
     this.setState(state => ({
       isActive: !state.isActive,
     }))
@@ -38,12 +38,12 @@ export class RadioButton extends Component {
 
     return <div
       className="control"
-      onClick={this.onClickHandler.bind(this)}
+      onClick={this.onClick.bind(this)}
     >
-      <div 
+      <div
         className={`radio-button ${isActive ? 'active' : ''}`}
       ></div>
-      <label>{ this.props.label }</label>
+      <label>{this.props.label}</label>
     </div>
   }
 }

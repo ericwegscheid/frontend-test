@@ -19,7 +19,13 @@ export class FilterComponent extends Component {
     }))
   }
 
-  onClickClearAll(e) {
+  onSelectPrice(price) {
+    this.setState({
+      price: price,
+    })
+  }
+
+  onClickClearAll() {
     this.setState(state => ({
       isOpen: null,
       price: null,
@@ -28,22 +34,30 @@ export class FilterComponent extends Component {
   }
 
   render() {
+    const { isOpen, price, category } = this.state
+
     const clearButtonStyles = {
       float: 'right',
       width: '10%',
     }
 
     const hasNoFilter =
-      !this.state.isOpen &&
-      !this.state.price &&
-      !this.state.category
+      (!category || category === 'all') &&
+      (!price || price === 'all') &&
+      !isOpen
 
     return <div className="filter">
       <label>Filter by:</label>
       <RadioButton
         label="Open Now"
-        isActive={!hasNoFilter}
+        isActive={!hasNoFilter && isOpen}
         onClick={this.onClickOpenNow.bind(this)}
+      />
+      <SelectBox
+        label="Price"
+        options={{all: 'All', $: '$', $$: '$$', $$$: '$$$', $$$$: '$$$$'}}
+        onSelectItem={this.onSelectPrice.bind(this)}
+        selected="all"
       />
       <Button
         className={`secondary small ${hasNoFilter ? 'disabled' : ''}`}
