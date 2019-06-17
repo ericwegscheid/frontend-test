@@ -1,3 +1,4 @@
+import { each, sortBy } from 'lodash'
 import React, { Component, Fragment } from 'react'
 import { Button, RadioButton, SelectBox } from '../shared'
 import './styles'
@@ -25,12 +26,29 @@ export class FilterComponent extends Component {
     })
   }
 
+  onSelectCategory(category) {
+    this.setState({
+      category: category,
+    })
+  }
+
   onClickClearAll() {
     this.setState(state => ({
       isOpen: null,
       price: null,
       category: null,
     }))
+  }
+
+  getCategoryOptions() {
+    const options = {}
+
+    each(sortBy(this.props.popularCategories, 'title'), v => options[v.alias] = v.title)
+
+    return {
+      all: 'All',
+      ...options,
+    }
   }
 
   render() {
@@ -57,7 +75,13 @@ export class FilterComponent extends Component {
         label="Price"
         options={{all: 'All', $: '$', $$: '$$', $$$: '$$$', $$$$: '$$$$'}}
         onSelectItem={this.onSelectPrice.bind(this)}
-        selected="all"
+        selected={hasNoFilter ? 'all' : price || 'all'}
+      />
+      <SelectBox
+        label="Category"
+        options={this.getCategoryOptions()}
+        onSelectItem={this.onSelectCategory.bind(this)}
+        selected={hasNoFilter ? 'all' : category || 'all'}
       />
       <Button
         className={`secondary small ${hasNoFilter ? 'disabled' : ''}`}
