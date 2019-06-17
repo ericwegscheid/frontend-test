@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-// import { Filter } from '../filter'
+import { Filter } from '../filter'
 import { Row } from '../shared'
 import './styles'
 
@@ -37,6 +37,7 @@ export class RestaurantSearchComponent extends Component {
         <p className="description">{description}</p>
       </Row>
       <Row style={rowStyles}>
+        <Filter />
       </Row>
     </Fragment>
   }

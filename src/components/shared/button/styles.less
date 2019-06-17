@@ -1,0 +1,43 @@
+@import '../../../styles/global.less';
+
+button {
+  text-transform: uppercase;
+  text-align: center;
+  border-color: @primary;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  height: 46px;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  padding: 16px;
+  cursor: pointer;
+
+  &.small {
+    height: 38px;
+    font-size: 12px;
+    padding: 11px 16px;
+  }
+
+  &.primary {
+    background: @primary;
+    color: @white;
+
+    &.disabled {
+      background: @gray6;
+      border-color: @gray6;
+    }
+  }
+
+  &.secondary {
+    background: @white;
+    color: @primary;
+    border-radius: 0px;
+
+    &.disabled {
+      border-color: @gray6;
+      color: @gray4;
+    }
+  }
+}

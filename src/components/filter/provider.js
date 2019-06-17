@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { selectCategories } from '../../store'
+import { fetchRestaurants } from '../../store'
 import { FilterComponent } from './component'
 
 const mapStateToProps = state => ({
@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    selectCategories,
+    fetchRestaurants,
   }, dispatch)
 }
 
-export const MainView = connect(mapStateToProps, mapDispatchToProps)(FilterComponent)
+export const Filter = connect(mapStateToProps, mapDispatchToProps)(FilterComponent)

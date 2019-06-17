@@ -18,31 +18,20 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-button {
-  text-transform: uppercase;
-  text-align: center;
-  border-color: @primary;
-  border-radius: 2px;
-  border-width: 1px;
-  height: 46px;
+.control {
+  height: 32px;
+  border-bottom: 1px solid @gray4;
+  margin-right: 32px;
 
-  &.primary {
-    background: @primary;
-    color: @white;
-
-    &.disabled {
-      background: @gray6;
-      border-color: @gray6;
-    }
+  > * {
+    float: left;
   }
 
-  &.secondary {
-    background: @white;
+  label {
     color: @primary;
-
-    &.disabled {
-      border-color: @gray6;
-      color: @gray4;
-    }
+    height: 18px;
+    line-height: 18px;
+    padding-top: 8px;
+    padding-bottom: 6px;
   }
 }

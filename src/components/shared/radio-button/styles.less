@@ -1,0 +1,19 @@
+@import '../../../styles/global.less';
+
+.radio-bottom {
+  margin: 1px 8px 0 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  border: 1px solid @gray4;
+
+  &.active:before {
+    content: '';
+    background: @primary;
+    width: 8px;
+    height: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+  }
+}
