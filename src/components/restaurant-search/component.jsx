@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Filter } from '../filter'
-import { Row } from '../shared'
+import { Row, Spinner } from '../shared'
 import './styles'
 
 export class RestaurantSearchComponent extends Component {
@@ -24,7 +24,8 @@ export class RestaurantSearchComponent extends Component {
   }
 
   render() {
-    const { title, description } = this.props
+    const { title, description, restaurants } = this.props
+
     const rowStyles = {
       borderTopWidth: '1px',
       borderBottomWidth: '1px',
@@ -38,6 +39,13 @@ export class RestaurantSearchComponent extends Component {
       </Row>
       <Row style={rowStyles}>
         <Filter />
+      </Row>
+      <Row>
+        {
+          this.state.isFetching ?
+            <Spinner /> :
+            <pre>{JSON.stringify(restaurants)}</pre>
+        }
       </Row>
     </Fragment>
   }
