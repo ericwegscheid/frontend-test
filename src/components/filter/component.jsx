@@ -1,4 +1,4 @@
-import { each, sortBy } from 'lodash'
+import { map, sortBy } from 'lodash'
 import React, { Component, Fragment } from 'react'
 import { Button, RadioButton, SelectBox } from '../shared'
 import './styles'
@@ -60,15 +60,24 @@ export class FilterComponent extends Component {
     this.applyFilter()
   }
 
+  getPriceOptions() {
+    return [
+      { key: 'all', value: 'All' },
+      { key: '1', value: '$' },
+      { key: '2', value: '$$' },
+      { key: '3', value: '$$$' },
+      { key: '4', value: '$$$$' },
+    ]
+  }
+
   getCategoryOptions() {
-    const options = {}
-
-    each(sortBy(this.props.popularCategories, 'title'), v => options[v.alias] = v.title)
-
-    return {
-      all: 'All',
-      ...options,
-    }
+    return [
+      { key: 'all', value: 'All' },
+      ...map(
+        sortBy(this.props.popularCategories, 'title'),
+        v => ({ key: v.alias, value: v.title })
+      ),
+    ]
   }
 
   render() {
@@ -93,7 +102,7 @@ export class FilterComponent extends Component {
       />
       <SelectBox
         label="Price"
-        options={{'all': 'All', '1': '$', '2': '$$', '3': '$$$', '4': '$$$$'}}
+        options={this.getPriceOptions()}
         onSelectItem={this.onSelectPrice.bind(this)}
         selected={hasNoFilter ? 'all' : price || 'all'}
       />

@@ -52,13 +52,13 @@ export class SelectBox extends Component {
     >
       <ul>
         {
-          map(this.props.options, (v, k) =>
+          map(this.props.options, v =>
             <li
-              key={k}
-              className={this.state.selected === k ? 'selected' : ''}
-              onClick={this.onSelectItem.bind(this, k)}
+              key={v.key}
+              className={this.state.selected === v.key ? 'selected' : ''}
+              onClick={this.onSelectItem.bind(this, v.key)}
             >
-              <span>{v}</span>
+              <span>{v.value}</span>
             </li>
           )
         }
