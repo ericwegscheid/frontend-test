@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Filter } from '../filter'
+import { RestaurantSearchResults } from '../restaurant-search-results'
 import { Row, Spinner } from '../shared'
 import './styles'
 
@@ -19,27 +20,27 @@ export class RestaurantSearchComponent extends Component {
   render() {
     const { title, description, restaurants } = this.props
 
-    const rowStyles = {
+    const filterRowStyles = {
       borderTopWidth: '1px',
       borderBottomWidth: '1px',
       borderStyle: 'solid',
     }
 
-    return <Fragment>
+    return <div className="restaurant-search">
       <Row>
         <h1 className="title">{title}</h1>
         <p className="description">{description}</p>
       </Row>
-      <Row style={rowStyles}>
+      <Row style={filterRowStyles}>
         <Filter />
       </Row>
       <Row>
         {
           this.props.isFetchingRestaurants ?
             <Spinner /> :
-            <pre>{JSON.stringify(restaurants)}</pre>
+            <RestaurantSearchResults title="All Restaurants" />
         }
       </Row>
-    </Fragment>
+    </div>
   }
 }
