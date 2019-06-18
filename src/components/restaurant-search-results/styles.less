@@ -12,8 +12,16 @@
   }
 
   .restaurants {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    column-gap: 2%;
+
+    .responsive(@mediumView, {
+      grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
+    });
+
+    .responsive(@smallView, {
+      grid-template-columns: repeat(auto-fill, minmax(90%, 1fr));
+    });
   }
 }
