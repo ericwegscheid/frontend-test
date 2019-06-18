@@ -6,8 +6,8 @@ export class RestaurantDetailsComponent extends Component {
   }
 
   render() {
-    return (<div>
+    return <div>
       <p>details</p>
     </div>
-  )}
+  }
 }

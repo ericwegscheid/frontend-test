@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Filter } from '../filter'
+import { Restaurant } from '../restaurant'
 import { Button, Row } from '../shared'
 import './styles'
 
@@ -10,6 +11,10 @@ export class RestaurantSearchResultsComponent extends Component {
     this.state = {
       title: props.title,
     }
+  }
+
+  onSelectRestaurant(restaurant) {
+    console.log(restaurant)
   }
 
   onClickLoadMore() {
@@ -27,7 +32,7 @@ export class RestaurantSearchResultsComponent extends Component {
     const loadMoreButtonStyles = {
       width: '25%',
       minWidth: '128px',
-      margin: '80px auto 0',
+      margin: '0 auto',
     }
 
     return <div className="restaurant-search-results">
@@ -35,7 +40,10 @@ export class RestaurantSearchResultsComponent extends Component {
       <div className="restaurants">
         {
           restaurants.map(restaurant => (
-            <div className="restaurant">{restaurant.name}</div>
+            <Restaurant
+              restaurant={restaurant}
+              onSelect={this.onSelectRestaurant.bind(this)}
+            />
           ))
         }
       </div>
