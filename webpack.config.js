@@ -22,7 +22,7 @@ if (!token) {
 }
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: ['babel-polyfill', './src/index.jsx'],
   mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx', '.less']
