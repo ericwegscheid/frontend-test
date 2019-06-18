@@ -16,12 +16,17 @@ export class FilterComponent extends Component {
 
   applyFilter() {
     const { isOpen, price, category } = this.state
+    const filter = { open_now: !!isOpen }
 
-    this.props.fetchRestaurants({
-      open_now: isOpen,
-      price: price,
-      categories: category,
-    })
+    if (price && price.key !== 'all') {
+      filter.price = price.key
+    }
+
+    if (category && category.key !== 'all') {
+      filter.categories = category.key
+    }
+
+    this.props.fetchRestaurants(filter)
   }
 
   async onClickOpenNow() {
@@ -83,6 +88,11 @@ export class FilterComponent extends Component {
   render() {
     const { isOpen, price, category } = this.state
 
+    const priceOptions = this.getPriceOptions()
+    const defaultPrice = priceOptions[0]
+    const categoryOptions = this.getCategoryOptions()
+    const defaultCategory = categoryOptions[0]
+
     const clearButtonStyles = {
       float: 'right',
       width: '10%',
@@ -102,15 +112,15 @@ export class FilterComponent extends Component {
       />
       <SelectBox
         label="Price"
-        options={this.getPriceOptions()}
+        options={priceOptions}
         onSelectItem={this.onSelectPrice.bind(this)}
-        selected={hasNoFilter ? 'all' : price || 'all'}
+        selected={hasNoFilter ? defaultPrice : price || defaultPrice}
       />
       <SelectBox
         label="Category"
-        options={this.getCategoryOptions()}
+        options={categoryOptions}
         onSelectItem={this.onSelectCategory.bind(this)}
-        selected={hasNoFilter ? 'all' : category || 'all'}
+        selected={hasNoFilter ? defaultCategory : category || defaultCategory}
       />
       <Button
         className={`secondary small ${hasNoFilter ? 'disabled' : ''}`}

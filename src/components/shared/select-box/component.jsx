@@ -44,7 +44,7 @@ export class SelectBox extends Component {
   }
 
   render() {
-    const { isOpen } = this.state
+    const { isOpen, selected } = this.state
 
     return <div
       className={`control select-box ${isOpen ? 'open' : ''}`}
@@ -55,15 +55,15 @@ export class SelectBox extends Component {
           map(this.props.options, v =>
             <li
               key={v.key}
-              className={this.state.selected === v.key ? 'selected' : ''}
-              onClick={this.onSelectItem.bind(this, v.key)}
+              className={selected.key === v.key ? 'selected' : ''}
+              onClick={this.onSelectItem.bind(this, v)}
             >
               <span>{v.value}</span>
             </li>
           )
         }
       </ul>
-      <label>{this.props.label}</label>
+      <label>{this.props.label}<span>{selected.value}</span></label>
     </div>
   }
 }
