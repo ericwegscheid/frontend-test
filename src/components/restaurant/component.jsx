@@ -11,6 +11,10 @@ export class Restaurant extends Component {
     console.log('learn more')
   }
 
+  getCategory() {
+    return 'Category'
+  }
+
   render() {
     const { image_url, is_closed, price, name } = this.props.restaurant
 
@@ -20,11 +24,15 @@ export class Restaurant extends Component {
         style={{ backgroundImage: `url(${image_url})` }}
       ></div>
       <h4>{name}</h4>
-      <span className="category">Category</span>
-      <span className="price">{price}</span>
-      <span className={`isOpen ${is_closed ? 'closed' : ''}`}>
-        {is_closed ? 'Closed' : 'Open Now'}
-      </span>
+      <div>star star star star star</div>
+      <div className="details">
+        <span className="category-price">
+          {this.getCategory()} &bull; {price}
+        </span>
+        <span className={`is-open ${is_closed ? 'closed' : ''}`}>
+          {is_closed ? 'Closed' : 'Open Now'}
+        </span>
+      </div>
       <Button
         onClick={this.onClickLearnMore.bind(this)}
       >

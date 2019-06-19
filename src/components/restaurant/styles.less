@@ -11,7 +11,7 @@
     height: 228px;
     background-position: center;
     background-size: cover;
-    background-color: @gray5;
+    background-color: @gray6;
 
     .responsive(@mediumView, {
       height: 196px;
@@ -28,6 +28,41 @@
     font-size: 20px;
     margin: 16px 0 8px;
     display: inline-table;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+  }
+
+  .category-price,
+  .is-open {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 18px;
+    line-height: 16px;
+    color: @gray4;
+    text-transform: uppercase;
+  }
+
+  .is-open {
+    padding-left: 12px;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      background: @brightGreen;
+      .circle(8px);
+
+      &.closed {
+        background: @brightRed;
+      }
+    }
   }
 
   button {

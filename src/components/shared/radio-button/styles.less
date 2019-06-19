@@ -2,19 +2,15 @@
 
 .radio-button {
   margin: 1px 8px 0 0;
-  width: 16px;
-  height: 16px;
-  border-radius: 9px;
-  border: 1px solid @gray4;
+  border: 1px solid @gray5;
   position: relative;
+  .circle(16px);
 
   &.active:before {
     content: '';
     background: @primary;
-    width: 8px;
-    height: 8px;
     margin: 4px;
-    border-radius: 5px;
     position: absolute;
+    .circle(8px);
   }
 }

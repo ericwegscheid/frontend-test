@@ -7,10 +7,11 @@
 @black: #000000;
 @gray1: #333333;
 @gray2: #666666;
-@gray3: #969696;
-@gray4: #C8C8C8;
-@gray5: #D8D8D8;
-@gray6: #E6E6E6;
+@gray3: #757575;
+@gray4: #969696;
+@gray5: #C8C8C8;
+@gray6: #D8D8D8;
+@gray7: #E6E6E6;
 @white: #ffffff;
 
 // fonts
@@ -25,4 +26,32 @@
   @media only screen and (max-width: @maxWidth) {
     @rules();
   }
+}
+
+// shapes
+.circle(@diameter) {
+  display: inline-block;
+  width: @diameter;
+  height: @diameter;
+  border-radius: 50%;
+}
+
+.checkmark(@size, @color) {
+  @borderWidth: @size / 4;
+  width: @size;
+  height: @size / 2;
+  border-style: solid;
+  border-color: @color;
+  border-width: 0 0 @borderWidth @borderWidth;
+  margin-top: -(@size / 2.66);
+  transform: rotate(-45deg);
+}
+
+.carrot(@size, @color) {
+  @borderWidth: @size / 4;
+  width: @size;
+  height: @size;
+  border-style: solid;
+  border-color: @color;
+  border-width: 0 0 @borderWidth @borderWidth;
 }
