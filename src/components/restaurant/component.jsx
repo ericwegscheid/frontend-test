@@ -1,6 +1,6 @@
 import { each, findIndex } from 'lodash'
 import React, { Component } from 'react'
-import { Button } from '../shared'
+import { Button, StarRating } from '../shared'
 import './styles'
 
 export class RestaurantComponent extends Component {
@@ -38,7 +38,7 @@ export class RestaurantComponent extends Component {
   }
 
   render() {
-    const { image_url, is_closed, price, name } = this.props.restaurant
+    const { image_url, is_closed, name, price, rating } = this.props.restaurant
 
     return <div className="restaurant">
       <div
@@ -46,7 +46,7 @@ export class RestaurantComponent extends Component {
         style={{ backgroundImage: `url(${image_url})` }}
       ></div>
       <h4>{name}</h4>
-      <div>star star star star star</div>
+      <StarRating rating={rating} />
       <div className="details">
         <span className="category-price">
           {this.getCategory()} &bull; {price}

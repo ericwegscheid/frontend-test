@@ -1,3 +1,4 @@
+import { map } from 'lodash'
 import React, { Component } from 'react'
 import { Filter } from '../filter'
 import { Restaurant } from '../restaurant'
@@ -39,8 +40,9 @@ export class RestaurantSearchResultsComponent extends Component {
       <h2 className="title">{title}</h2>
       <div className="restaurants">
         {
-          restaurants.map(restaurant => (
+          map(restaurants, restaurant => (
             <Restaurant
+              key={restaurant.id}
               restaurant={restaurant}
               onSelect={this.onSelectRestaurant.bind(this)}
             />
