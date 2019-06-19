@@ -15,16 +15,12 @@ export class RestaurantComponent extends Component {
   getCategory() {
     const { categories } = this.props.restaurant
     const { popularCategories, selectedCategory } = this.props
-    let category = 'yup'
 
-    if (
-      selectedCategory &&
-      selectedCategory.key !== 'all' &&
-      findIndex(categories, ['alias', selectedCategory.key]) >= 0
-    ) {
-      // the selectedCategory should be available in restaurant categories
-      category = selectedCategory.value
-    } else {
+    // ensure a default category is set
+    let category = (selectedCategory || {}).value || categories[0].title
+
+    // in the case no category is specified
+    if (!selectedCategory || selectedCategory.key === 'all') {
       // of restaurant categories choose most popular
       // popularCategories should always be sorted by popularity
       each(popularCategories, (v) => {
