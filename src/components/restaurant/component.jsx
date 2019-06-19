@@ -1,8 +1,9 @@
+import { each, findIndex } from 'lodash'
 import React, { Component } from 'react'
 import { Button } from '../shared'
 import './styles'
 
-export class Restaurant extends Component {
+export class RestaurantComponent extends Component {
   constructor(props) {
     super(props)
   }
@@ -12,7 +13,28 @@ export class Restaurant extends Component {
   }
 
   getCategory() {
-    return 'Category'
+    const { categories } = this.props.restaurant
+    const { popularCategories, selectedCategory } = this.props
+    let category = 'yup'
+
+    if (
+      selectedCategory &&
+      selectedCategory.key !== 'all' &&
+      findIndex(categories, ['alias', selectedCategory.key]) >= 0
+    ) {
+      // the selectedCategory should be available in restaurant categories
+      category = selectedCategory.value
+    } else {
+      // of restaurant categories choose most popular
+      // popularCategories should always be sorted by popularity
+      each(popularCategories, (v) => {
+        if (findIndex(categories, ['alias', v.alias]) >= 0) {
+          category = v.title
+        }
+      })
+    }
+
+    return category
   }
 
   render() {

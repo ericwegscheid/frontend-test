@@ -13,7 +13,7 @@ const initialState = {
     restaurantDetails: null,
   },
   filter: {
-    isOpen: null,
+    isOpen: false,
     price: null,
     category: null,
     popularCategories: null,
@@ -61,6 +61,14 @@ export const reducer = (state = initialState, action) => {
           get(state, 'mainView.restaurants'),
           action.payload,
         ),
+      },
+    }
+  case 'APPLY_FILTER':
+    return {
+      ...state,
+      filter: {
+        ...state.filter,
+        ...action.payload,
       },
     }
   case 'FETCH_RESTAURANTS':

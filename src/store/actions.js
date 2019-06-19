@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { map } from 'lodash'
+import { get, isNil, map } from 'lodash'
 
 const businessesEndpoint = 'http://localhost:9000/api/v3/businesses'
 
@@ -8,13 +8,20 @@ const query = {
   location: 'Las Vegas',
 }
 
+export function formatFilter(filter) {
+  return {
+    open_now: get(filter, 'isOpen'),
+    price: get(filter, 'price.key'),
+    categories: get(filter, 'category.key'),
+  }
+}
+
 export function getUrl(filter) {
-  console.log(filter)
   return [
     `${businessesEndpoint}/search?`,
     map(
-      { ...query, ...filter },
-      (v, k) => `${k}=${v}`).join('&'),
+      { ...query, ...formatFilter(filter) },
+      (v, k) => isNil(v) ? '' : `${k}=${v}`).join('&'),
   ].join('')
 }
 
@@ -27,6 +34,15 @@ export function setPopularCategories(limit) {
     dispatch({
       type: 'SET_CATEGORIES',
       payload: limit,
+    })
+  }
+}
+
+export function applyFilter(filter) {
+  return dispatch => {
+    dispatch({
+      type: 'APPLY_FILTER',
+      payload: filter,
     })
   }
 }

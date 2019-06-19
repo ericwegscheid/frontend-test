@@ -16,16 +16,17 @@ export class FilterComponent extends Component {
 
   applyFilter() {
     const { isOpen, price, category } = this.state
-    const filter = { open_now: !!isOpen }
+    const filter = { isOpen: !!isOpen }
 
     if (price && price.key !== 'all') {
-      filter.price = price.key
+      filter.price = price
     }
 
     if (category && category.key !== 'all') {
-      filter.categories = category.key
+      filter.category = category
     }
 
+    this.props.applyFilter(filter)
     this.props.fetchRestaurants(filter)
   }
 

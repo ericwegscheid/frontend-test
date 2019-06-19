@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchRestaurants } from '../../store'
+import { applyFilter, fetchRestaurants } from '../../store'
 import { FilterComponent } from './component'
 
 const mapStateToProps = state => ({
@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
+    applyFilter,
     fetchRestaurants,
   }, dispatch)
 }
