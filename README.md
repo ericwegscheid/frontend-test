@@ -1,8 +1,8 @@
 # Superformula Front-end Developer Coding Test
 
-This project leverages Yelp's Fusion API to search for restaurants in the Las Vegas area by the top 10 most popular restaurant categories, price, and open status, as well as displays restaurant details and reviews.
+This project leverages Yelp's Fusion API to search for restaurants in the Las Vegas area by their top 10 most popular restaurant categories, price, and open status, as well as displays restaurant details and reviews.
 
-## Installing / Getting started
+## Getting started
 
 ### Requirements
 
@@ -10,9 +10,9 @@ This project leverages Yelp's Fusion API to search for restaurants in the Las Ve
 * node 11+
 * npm 6+
 
-### Attain Yelp API Key
+### Attaining Yelp API Key
 
-To get this project up and running you must have an API Key. An API Key can be attained by [creating an app](https://www.yelp.com/developers/v3/manage_app) at [Yelp's developer website](https://www.yelp.com/developers/documentation/v3). You will be prompted to register an account or login to an existing account. Once you are logged in you should be able to reteive your API Key on the '[Manage App](https://www.yelp.com/developers/v3/manage_app)' page.
+To get this project up and running you must have an API Key, which can be attained by [creating an app](https://www.yelp.com/developers/v3/manage_app) at [Yelp's developer website](https://www.yelp.com/developers/documentation/v3). You will be prompted to register an account or login to an existing account. Once you are logged in, you should be able to retrieve your API Key on the '[Manage App](https://www.yelp.com/developers/v3/manage_app)' page.
 
 
 ### Clone Repository and Install Dependencies
@@ -45,7 +45,7 @@ You're all set!
 
 ### For Production
 
-Create dist folder of bundled project in the project's root directory, which can used in a production environment.
+To create a 'dist' folder of the bundled project run the command below. This will create a new folder in the project's root directory, which can used in a production environment.
 
 ```shell
 npm run build
@@ -53,6 +53,12 @@ npm run build
 
 ## Developer's notes
 
-...
+_Please stay tuned, there is more to come!_
 
+* Implement Restaurant Details Page
+* Implement Unit Tests (in the real world I'd strive to be as TTD as possible, but for the sake of expediting the completion of this assessment I've opted to hammer out a good portion of the front-end first)
+* Update UI to support mobile
+* Implement Component Stories With [Storybook](https://storybook.js.org)
+* Polish UI With Subtle Animations
+* Update App To Use [Graph QL](https://www.yelp.com/developers/graphql/guides/intro) (Initially opted to use Yelp's Fusion API)
 
