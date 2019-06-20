@@ -6,6 +6,7 @@ const initialState = {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     isFetchingRestaurants: false,
     restaurants: null,
+    error: null,
   },
   detailView: {
     title: null,
@@ -77,6 +78,7 @@ export const reducer = (state = initialState, action) => {
       mainView: {
         ...state.mainView,
         isFetchingRestaurants: true,
+        error: null,
       },
     }
   case 'RECEIVED_RESTAURANTS':

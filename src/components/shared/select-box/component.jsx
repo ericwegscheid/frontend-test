@@ -7,6 +7,7 @@ export class SelectBox extends Component {
     super(props)
 
     this.state = {
+      isDisabled: props.isDisabled,
       isOpen: false,
       options: {
         ...props.options,
@@ -16,11 +17,15 @@ export class SelectBox extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const shouldUpdate = this.state.selected !== nextProps.selected
+    const shouldUpdate =
+      this.state.selected !== nextProps.selected ||
+      this.state.isDisabled !== nextProps.isDisabled
+
 
     if (shouldUpdate) {
       this.setState({
         selected: nextProps.selected,
+        isDisabled: nextProps.isDisabled,
       })
     }
 
@@ -44,10 +49,15 @@ export class SelectBox extends Component {
   }
 
   render() {
-    const { isOpen, selected } = this.state
+    const { isDisabled, isOpen, selected } = this.state
+    const classNames = [
+      'control select-box',
+      isDisabled ? 'disabled' : '',
+      isOpen ? 'open' : '',
+    ].join(' ')
 
     return <div
-      className={`control select-box ${isOpen ? 'open' : ''}`}
+      className={classNames}
       onClick={this.onClick.bind(this)}
     >
       <ul>

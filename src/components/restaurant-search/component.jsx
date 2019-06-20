@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Filter } from '../filter'
 import { RestaurantSearchResults } from '../restaurant-search-results'
-import { Row, Spinner } from '../shared'
+import { Oops, Row, Spinner } from '../shared'
 import './styles'
 
 export class RestaurantSearchComponent extends Component {
@@ -9,6 +9,7 @@ export class RestaurantSearchComponent extends Component {
     super(props)
 
     this.props.initialize().then(() => {
+      console.log('yup')
       this.props.setPopularCategories(props.categoryLimit)
     })
   }
@@ -18,7 +19,7 @@ export class RestaurantSearchComponent extends Component {
   }
 
   render() {
-    const { title, description, restaurants } = this.props
+    const { title, description, error, restaurants } = this.props
 
     const filterRowStyles = {
       borderTopWidth: '1px',
@@ -32,13 +33,15 @@ export class RestaurantSearchComponent extends Component {
         <p className="description">{description}</p>
       </Row>
       <Row style={filterRowStyles}>
-        <Filter />
+        <Filter isDisabled={!!error}/>
       </Row>
       <Row>
         {
           this.props.isFetchingRestaurants ?
             <Spinner /> :
-            <RestaurantSearchResults title="All Restaurants" />
+            error ?
+              <Oops /> :
+              <RestaurantSearchResults title="All Restaurants" />
         }
       </Row>
     </div>

@@ -8,15 +8,20 @@ export class RadioButton extends Component {
 
     this.state = {
       isActive: props.isActive,
+      isDisabled: props.isDisabled,
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const shouldUpdate = this.state.isActive !== nextProps.isActive
+    const shouldUpdate =
+      this.state.isActive !== nextProps.isActive ||
+      this.state.isDisabled !== nextProps.isDisabled
+
 
     if (shouldUpdate) {
       this.setState({
         isActive: nextProps.isActive,
+        isDisabled: nextProps.isDisabled,
       })
     }
 
@@ -34,10 +39,10 @@ export class RadioButton extends Component {
   }
 
   render() {
-    const { isActive } = this.state
+    const { isActive, isDisabled } = this.state
 
     return <div
-      className="control"
+      className={`control ${isDisabled ? 'disabled' : ''}`}
       onClick={this.onClick.bind(this)}
     >
       <div

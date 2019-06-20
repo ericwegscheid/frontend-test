@@ -88,6 +88,7 @@ export class FilterComponent extends Component {
 
   render() {
     const { isOpen, price, category } = this.state
+    const { isDisabled } = this.props
 
     const priceOptions = this.getPriceOptions()
     const defaultPrice = priceOptions[0]
@@ -104,27 +105,30 @@ export class FilterComponent extends Component {
       (!price || price === 'all') &&
       !isOpen
 
-    return <div className="filter">
+    return <div className={`filter ${isDisabled ? 'disabled' : ''}`}>
       <label>Filter by:</label>
       <RadioButton
         label="Open Now"
         isActive={!hasNoFilter && isOpen}
+        isDisabled={isDisabled}
         onClick={this.onClickOpenNow.bind(this)}
       />
       <SelectBox
         label="Price"
+        isDisabled={isDisabled}
         options={priceOptions}
         onSelectItem={this.onSelectPrice.bind(this)}
         selected={hasNoFilter ? defaultPrice : price || defaultPrice}
       />
       <SelectBox
         label="Category"
+        isDisabled={isDisabled}
         options={categoryOptions}
         onSelectItem={this.onSelectCategory.bind(this)}
         selected={hasNoFilter ? defaultCategory : category || defaultCategory}
       />
       <Button
-        className={`secondary small ${hasNoFilter ? 'disabled' : ''}`}
+        className={`secondary small ${isDisabled || hasNoFilter ? 'disabled' : ''}`}
         onClick={this.onClickClearAll.bind(this)}
         style={clearButtonStyles}
       >
