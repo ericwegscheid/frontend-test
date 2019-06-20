@@ -4,8 +4,11 @@
   "description": "Frontend test for Superformula",
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --hot",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --env=development --hot --open",
+    "build": "webpack --env=production",
+    "test": "echo \"You haven't started your tests yet :(\"",
+    "clean": "rm -rf dist .token",
+    "reset": "npm run clean && npm i"
   },
   "author": "Eric Wegscheid",
   "license": "MIT",
