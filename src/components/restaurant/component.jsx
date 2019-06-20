@@ -39,6 +39,7 @@ export class RestaurantComponent extends Component {
     return <div className="restaurant">
       <div
         className={`thumb ${image_url ? '' : 'default'}`}
+        onClick={this.onClickLearnMore.bind(this)}
         style={{ backgroundImage: `url(${image_url})` }}
       ></div>
       <h4>{name}</h4>

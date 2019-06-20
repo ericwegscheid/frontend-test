@@ -9,7 +9,6 @@ export class RestaurantSearchComponent extends Component {
     super(props)
 
     this.props.initialize().then(() => {
-      console.log('yup')
       this.props.setPopularCategories(props.categoryLimit)
     })
   }
