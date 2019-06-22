@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Oops component should include passed in props in '.oops' dom element 1`] = `ShallowWrapper {}`;
+
+exports[`Oops component should renderer snapshot 1`] = `ShallowWrapper {}`;

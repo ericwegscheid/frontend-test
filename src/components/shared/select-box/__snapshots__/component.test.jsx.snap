@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectBox component should renderer snapshot 1`] = `"<div class=\\"control select-box  \\"><ul></ul><label><span></span></label></div>"`;

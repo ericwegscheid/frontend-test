@@ -2,30 +2,44 @@
   "name": "frontend-test",
   "version": "1.0.0",
   "description": "Frontend test for Superformula",
+  "author": "Eric Wegscheid",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "dev": "webpack-dev-server --env=development --hot --open",
     "build": "webpack --env=production",
-    "test": "echo \"You haven't started your tests yet :(\"",
+    "test": "jest",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "test:update": "jest --updateSnapshot",
     "clean": "rm -rf dist .token",
     "reset": "npm run clean && npm i"
   },
-  "author": "Eric Wegscheid",
-  "license": "MIT",
+  "jest": {
+    "moduleNameMapper": {
+      "^\\.\\/styles": "<rootDir>/__jest__/noop.js"
+    },
+    "setupFiles": [
+      "<rootDir>/__jest__/enzyme.config.js"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "7.4.5",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "axios": "0.19.0",
+    "babel-jest": "24.8.0",
     "babel-loader": "8.0.6",
     "babel-polyfill": "6.26.0",
     "body-parser": "1.19.0",
     "css-loader": "3.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "5.16.0",
     "eslint-loader": "2.1.2",
     "eslint-plugin-react": "7.13.0",
     "express": "4.17.1",
     "html-webpack-plugin": "3.2.0",
+    "jest": "24.8.0",
     "less": "3.9.0",
     "less-loader": "5.0.0",
     "lodash": "4.17.11",
@@ -33,6 +47,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-redux": "7.0.3",
+    "react-test-renderer": "16.8.6",
     "redux": "4.0.1",
     "redux-devtools-extension": "2.13.8",
     "redux-thunk": "2.3.0",

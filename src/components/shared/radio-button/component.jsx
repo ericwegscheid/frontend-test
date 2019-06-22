@@ -7,20 +7,20 @@ export class RadioButton extends Component {
     super(props)
 
     this.state = {
-      isActive: props.isActive,
+      isSelected: props.isSelected,
       isDisabled: props.isDisabled,
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const shouldUpdate =
-      this.state.isActive !== nextProps.isActive ||
+      this.state.isSelected !== nextProps.isSelected ||
       this.state.isDisabled !== nextProps.isDisabled
 
 
     if (shouldUpdate) {
       this.setState({
-        isActive: nextProps.isActive,
+        isSelected: nextProps.isSelected,
         isDisabled: nextProps.isDisabled,
       })
     }
@@ -30,7 +30,7 @@ export class RadioButton extends Component {
 
   onClick() {
     this.setState(state => ({
-      isActive: !state.isActive,
+      isSelected: !state.isSelected,
     }))
 
     if (isFunction(this.props.onClick)) {
@@ -39,14 +39,14 @@ export class RadioButton extends Component {
   }
 
   render() {
-    const { isActive, isDisabled } = this.state
+    const { isSelected, isDisabled } = this.state
 
     return <div
       className={`control ${isDisabled ? 'disabled' : ''}`}
       onClick={this.onClick.bind(this)}
     >
       <div
-        className={`radio-button ${isActive ? 'active' : ''}`}
+        className={`radio-button ${isSelected ? 'selected' : ''}`}
       ></div>
       <label>{this.props.label}</label>
     </div>

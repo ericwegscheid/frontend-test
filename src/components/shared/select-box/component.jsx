@@ -1,4 +1,4 @@
-import { isFunction, map } from 'lodash'
+import { get, isFunction, map } from 'lodash'
 import React, { Component } from 'react'
 import './styles'
 
@@ -73,7 +73,7 @@ export class SelectBox extends Component {
           )
         }
       </ul>
-      <label>{this.props.label}<span>{selected.value}</span></label>
+      <label>{this.props.label}<span>{get(selected, 'value')}</span></label>
     </div>
   }
 }

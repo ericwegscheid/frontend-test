@@ -43,6 +43,39 @@ After running the command above your default web browser should automatically op
 
 You're all set!
 
+### Testing
+
+Test frameworks used:
+* [Jest](https://jestjs.io)
+* [Enzyme](https://airbnb.io/enzyme/)
+
+#### Running Unit Tests
+
+```shell
+npm run test
+```
+
+#### Debugging Unit Tests
+
+> For details on how this works please see the [documentation](https://nodejs.org/de/docs/guides/debugging-getting-started/)
+
+I recommend just using [Chrome's DevTools](https://developers.google.com/web/tools/chrome-devtools/).
+
+```shell
+npm run test:debug
+```
+
+After running this command, open Chrome, enter `chrome://inspect` in the address bar, then you should see your application running under 'Remote Targets.' Click 'inspect', this will open your program in the Chrome's debugger. NOTE - It will not land on a break poing if you do not add a `debugger` statement in your code, either in any of your component.test.jsx or component.jsx files.
+
+#### Updating Test Snapshots
+
+After making modifications to the dom during development you may need to update your snapshots from time to time. Ensure that the dom is rendering as expected then run the following command.
+
+```shell
+npm run test:update
+```
+
+
 ### For Production
 
 To create a 'dist' folder of the bundled project run the command below. This will create a new folder in the project's root directory, which can used in a production environment.

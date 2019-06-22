@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButton component should initialize as disabled then enabled on receiving props 1`] = `"<div class=\\"control disabled\\"><div class=\\"radio-button \\"></div><label></label></div>"`;
+
+exports[`RadioButton component should initialize as disabled then enabled on receiving props 2`] = `"<div class=\\"control \\"><div class=\\"radio-button \\"></div><label></label></div>"`;
+
+exports[`RadioButton component should initialize as enabled then disabled on receiving props 1`] = `"<div class=\\"control \\"><div class=\\"radio-button \\"></div><label></label></div>"`;
+
+exports[`RadioButton component should initialize as enabled then disabled on receiving props 2`] = `"<div class=\\"control disabled\\"><div class=\\"radio-button \\"></div><label></label></div>"`;
+
+exports[`RadioButton component should initialize as selected then unselected on receiving props 1`] = `"<div class=\\"control \\"><div class=\\"radio-button selected\\"></div><label></label></div>"`;
+
+exports[`RadioButton component should initialize as selected then unselected on receiving props 2`] = `"<div class=\\"control \\"><div class=\\"radio-button \\"></div><label></label></div>"`;
+
+exports[`RadioButton component should initialize as unselected then selected on receiving props 1`] = `"<div class=\\"control \\"><div class=\\"radio-button \\"></div><label></label></div>"`;
+
+exports[`RadioButton component should initialize as unselected then selected on receiving props 2`] = `"<div class=\\"control \\"><div class=\\"radio-button selected\\"></div><label></label></div>"`;
+
+exports[`RadioButton component should render with the appropriate label 1`] = `"<div class=\\"control \\"><div class=\\"radio-button \\"></div><label>test</label></div>"`;
+
+exports[`RadioButton component should renderer snapshot 1`] = `"<div class=\\"control \\"><div class=\\"radio-button \\"></div><label></label></div>"`;

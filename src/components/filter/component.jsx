@@ -109,7 +109,7 @@ export class FilterComponent extends Component {
       <label>Filter by:</label>
       <RadioButton
         label="Open Now"
-        isActive={!hasNoFilter && isOpen}
+        isSelected={!hasNoFilter && isOpen}
         isDisabled={isDisabled}
         onClick={this.onClickOpenNow.bind(this)}
       />

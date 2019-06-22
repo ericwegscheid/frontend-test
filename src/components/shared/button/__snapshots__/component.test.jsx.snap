@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should include passed in props in 'button' dom element 1`] = `ShallowWrapper {}`;
+
+exports[`Button component should renderer snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`Button component should wrap child elements 1`] = `ShallowWrapper {}`;
