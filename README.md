@@ -43,7 +43,7 @@ After running the command above your default web browser should automatically op
 
 You're all set!
 
-### Run Unit Tests
+## Run Unit Tests
 
 This project uses [Jest](https://jestjs.io) and [Enzyme](https://airbnb.io/enzyme/) for running unit tests. To run the existing tests simply input the following command in your terminal at the root directory of the project.
 
@@ -67,7 +67,7 @@ Each unit test uses snapshots to ensure the components DOM structure is correct.
 npm run test:update
 ```
 
-### For Production
+## For Production
 
 To create a 'dist' folder of the bundled project run the command below. This will create a new folder in the project's root directory, which can used in a production environment.
 
