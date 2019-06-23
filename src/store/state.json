@@ -1,4 +1,11 @@
 {
+  "viewPorts": {
+    "xlarge": 1600,
+    "large": 1440,
+    "medium": 1280,
+    "small": 768,
+    "xsmall": 480
+  },
   "mainView": {
     "title": "Restaurants",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

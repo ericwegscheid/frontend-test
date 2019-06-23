@@ -10,18 +10,4 @@
     font-size: 34px;
     line-height: 40px;
   }
-
-  .restaurants {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
-    column-gap: 2%;
-
-    .responsive(@mediumView, {
-      grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
-    });
-
-    .responsive(@smallView, {
-      grid-template-columns: repeat(auto-fill, minmax(90%, 1fr));
-    });
-  }
 }

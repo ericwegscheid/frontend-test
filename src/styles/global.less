@@ -1,4 +1,4 @@
-// colors
+// colors ------------------------------------------ //
 @primary: #002B56;
 
 @brightGreen: #00E8A4;
@@ -14,11 +14,11 @@
 @gray7: #E6E6E6;
 @white: #ffffff;
 
-// fonts
+// fonts ------------------------------------------- //
 @primaryFont: Helvetica Neue;
 
-// responsiveness
-@largeView: 1440px;
+// responsive -------------------------------------- //
+@largeView: 1600px;
 @mediumView: 1280px;
 @smallView: 768px;
 
@@ -28,7 +28,42 @@
   }
 }
 
-// shapes
+// grid -------------------------------------------- //
+.setColumns(@columns) {
+  display: grid;
+  column-gap: 2%;
+  @percentage: percentage(((100 - (2 * (@columns - 1))) / @columns) / 100);
+  grid-template-columns: repeat(auto-fill, minmax(@percentage, 1fr));
+  & when (@percentage = 100%) {
+    column-gap: 0%;
+  }
+}
+
+.one-column {
+  .setColumns(1);
+}
+
+.two-column {
+  .setColumns(2);
+}
+
+.three-column {
+  .setColumns(3);
+}
+
+.four-column {
+  .setColumns(4);
+}
+
+.five-column {
+  .setColumns(5);
+}
+
+.six-column {
+  .setColumns(6);
+}
+
+// shapes ------------------------------------------ //
 .circle(@diameter) {
   display: inline-block;
   width: @diameter;

@@ -32,7 +32,7 @@ module.exports = env => {
     entry: ['babel-polyfill', './src/index.jsx'],
     mode: 'development',
     resolve: {
-      extensions: ['.js', '.jsx', '.less']
+      extensions: ['.js', '.jsx', '.json', '.less']
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -80,9 +80,9 @@ module.exports = env => {
           test: /\.less$/,
           exclude: /node_modules/,
           use: [
-            "style-loader",
-            "css-loader",
-            "less-loader"
+            'style-loader',
+            'css-loader',
+            'less-loader'
           ]
         }
       ]

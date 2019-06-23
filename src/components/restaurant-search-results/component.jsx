@@ -1,4 +1,4 @@
-import { map } from 'lodash'
+import { debounce, map } from 'lodash'
 import React, { Component } from 'react'
 import { Filter } from '../filter'
 import { Restaurant } from '../restaurant'
@@ -12,6 +12,56 @@ export class RestaurantSearchResultsComponent extends Component {
     this.state = {
       title: props.title,
     }
+
+    this.debouncedSetColumns = debounce(this.setColumns.bind(this), 50)
+
+    // map className for columns to number
+    this.numbers = {
+      'one': 1,
+      'two': 2,
+      'three': 3,
+      'four': 4,
+      'five': 5,
+      'six': 6,
+    }
+  }
+
+  componentDidMount() {
+    this.setColumns()
+    window.addEventListener('resize', this.debouncedSetColumns)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.debouncedSetColumns)
+    this.debouncedSetColumns.cancel()
+  }
+
+  setColumns() {
+    const { xlarge, large, medium, small, xsmall } = this.props.viewPorts
+    const { currentColumns } = this.state
+
+    const width = window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth
+
+    const columns = {
+      [xlarge]: 'six',
+      [large]: 'four',
+      [medium]: 'three',
+      [small]: 'two',
+      [xsmall]: 'one',
+    }[
+      width > large ? xlarge :
+        width > medium ? large :
+          width > small ? medium :
+            width > xsmall ? small : xsmall
+    ]
+
+    if ( columns !== currentColumns ) {
+      this.setState({
+        columns: columns,
+      })
+    }
   }
 
   onSelectRestaurant(restaurant) {
@@ -24,7 +74,7 @@ export class RestaurantSearchResultsComponent extends Component {
 
   render() {
     const { restaurants } = this.props
-    const { title } = this.state
+    const { columns, title } = this.state
 
     if (!restaurants) {
       return null
@@ -38,7 +88,7 @@ export class RestaurantSearchResultsComponent extends Component {
 
     return <div className="restaurant-search-results">
       <h2 className="title">{title}</h2>
-      <div className="restaurants">
+      <div className={`restaurants ${columns}-column`}>
         {
           map(restaurants, restaurant => (
             <Restaurant
