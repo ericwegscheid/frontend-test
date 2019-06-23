@@ -87,6 +87,7 @@ _Please stay tuned, there is more to come!_
 
 * Implement Restaurant Details Page
 * Implementing Unit Tests (in the real world I'd strive to be as TTD as possible, but for the sake of expediting the completion of this assessment I've opted to hammer out a good portion of the front-end first)
+  - Components and their unit tests are complete for `src/components/shared/*`
 * Update UI to support mobile
 * Implement Component Stories With [Storybook](https://storybook.js.org)
 * Polish UI With Subtle Animations
