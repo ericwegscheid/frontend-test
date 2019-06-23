@@ -1,4 +1,4 @@
-import { get, isFunction, map } from 'lodash'
+import { filter, get, isArray, isFunction, isPlainObject, isNil, isString, map } from 'lodash'
 import React, { Component } from 'react'
 import './styles'
 
@@ -6,30 +6,55 @@ export class SelectBox extends Component {
   constructor(props) {
     super(props)
 
+    const options =  this.scrubOptions(props.options)
+
     this.state = {
       isDisabled: props.isDisabled,
       isOpen: false,
-      options: {
-        ...props.options,
-      },
-      selected: props.selected,
+      options: options,
+      selected: props.selected || options[0],
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const shouldUpdate =
       this.state.selected !== nextProps.selected ||
-      this.state.isDisabled !== nextProps.isDisabled
-
+      this.state.isDisabled !== nextProps.isDisabled ||
+      !isArray(nextProps.options)
 
     if (shouldUpdate) {
-      this.setState({
-        selected: nextProps.selected,
-        isDisabled: nextProps.isDisabled,
+      this.setState(state => {
+        const selected = !this.isValidOption(nextProps.selected) ?
+          state.selected :
+          nextProps.selected
+        const isDisabled = isNil(nextProps.isDisabled) ?
+          state.isDisabled :
+          nextProps.isDisabled
+
+        return {
+          selected: selected,
+          isDisabled: isDisabled,
+          options: this.scrubOptions(nextProps.options),
+        }
       })
     }
 
     return shouldUpdate
+  }
+
+  isValidOption(option) {
+    return isPlainObject(option) && isString(option.key) && isString(option.value)
+  }
+
+  scrubOptions(options) {
+    const defaultOptions = [{ key: '0', value: 'default' }]
+
+    const opts = filter(
+      !isArray(options) ? defaultOptions : options,
+      v => this.isValidOption(v)
+    )
+
+    return opts.length ? opts : defaultOptions
   }
 
   onClick() {
@@ -49,7 +74,8 @@ export class SelectBox extends Component {
   }
 
   render() {
-    const { isDisabled, isOpen, selected } = this.state
+    const { isDisabled, isOpen, options, selected } = this.state
+
     const classNames = [
       'control select-box',
       isDisabled ? 'disabled' : '',
@@ -60,9 +86,13 @@ export class SelectBox extends Component {
       className={classNames}
       onClick={this.onClick.bind(this)}
     >
+      <div className="label">
+        <label>{this.props.label}</label>
+        <span>{get(selected, 'value')}</span>
+      </div>
       <ul>
         {
-          map(this.props.options, v =>
+          map(options, v =>
             <li
               key={v.key}
               className={selected.key === v.key ? 'selected' : ''}
@@ -73,7 +103,6 @@ export class SelectBox extends Component {
           )
         }
       </ul>
-      <label>{this.props.label}<span>{get(selected, 'value')}</span></label>
     </div>
   }
 }

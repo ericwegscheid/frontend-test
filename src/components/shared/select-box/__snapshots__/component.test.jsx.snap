@@ -1,3 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SelectBox component should renderer snapshot 1`] = `"<div class=\\"control select-box  \\"><ul></ul><label><span></span></label></div>"`;
+exports[`SelectBox component should execute appropriate onClick behavior 1`] = `"<div class=\\"control select-box  open\\"><div class=\\"label\\"><label></label><span>zero</span></div><ul><li class=\\"selected\\"><span>zero</span></li><li class=\\"\\"><span>one</span></li><li class=\\"\\"><span>two</span></li><li class=\\"\\"><span>three</span></li><li class=\\"\\"><span>four</span></li></ul></div>"`;
+
+exports[`SelectBox component should execute appropriate onClick behavior 2`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>zero</span></div><ul><li class=\\"selected\\"><span>zero</span></li><li class=\\"\\"><span>one</span></li><li class=\\"\\"><span>two</span></li><li class=\\"\\"><span>three</span></li><li class=\\"\\"><span>four</span></li></ul></div>"`;
+
+exports[`SelectBox component should execute appropriate onClick behavior 3`] = `"<div class=\\"control select-box  open\\"><div class=\\"label\\"><label></label><span>one</span></div><ul><li class=\\"\\"><span>zero</span></li><li class=\\"selected\\"><span>one</span></li><li class=\\"\\"><span>two</span></li><li class=\\"\\"><span>three</span></li><li class=\\"\\"><span>four</span></li></ul></div>"`;
+
+exports[`SelectBox component should initialize as disabled then enabled on receiving props 1`] = `"<div class=\\"control select-box disabled \\"><div class=\\"label\\"><label></label><span>default</span></div><ul><li class=\\"selected\\"><span>default</span></li></ul></div>"`;
+
+exports[`SelectBox component should initialize as disabled then enabled on receiving props 2`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>default</span></div><ul><li class=\\"selected\\"><span>default</span></li></ul></div>"`;
+
+exports[`SelectBox component should initialize as enabled then disabled on receiving props 1`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>default</span></div><ul><li class=\\"selected\\"><span>default</span></li></ul></div>"`;
+
+exports[`SelectBox component should initialize as enabled then disabled on receiving props 2`] = `"<div class=\\"control select-box disabled \\"><div class=\\"label\\"><label></label><span>default</span></div><ul><li class=\\"selected\\"><span>default</span></li></ul></div>"`;
+
+exports[`SelectBox component should initialize with the appropriate selected item then update on receiving props 1`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>zero</span></div><ul><li class=\\"selected\\"><span>zero</span></li><li class=\\"\\"><span>one</span></li><li class=\\"\\"><span>two</span></li></ul></div>"`;
+
+exports[`SelectBox component should initialize with the appropriate selected item then update on receiving props 2`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>one</span></div><ul><li class=\\"\\"><span>zero</span></li><li class=\\"selected\\"><span>one</span></li><li class=\\"\\"><span>two</span></li></ul></div>"`;
+
+exports[`SelectBox component should initialize with the appropriate selected item then update on receiving props 3`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>one</span></div><ul><li class=\\"\\"><span>zero</span></li><li class=\\"selected\\"><span>one</span></li><li class=\\"\\"><span>two</span></li></ul></div>"`;
+
+exports[`SelectBox component should render with the appropriate label 1`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label>test</label><span>default</span></div><ul><li class=\\"selected\\"><span>default</span></li></ul></div>"`;
+
+exports[`SelectBox component should render with the appropriate options when given invalid options 1`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>zero</span></div><ul><li class=\\"selected\\"><span>zero</span></li><li class=\\"\\"><span>three</span></li></ul></div>"`;
+
+exports[`SelectBox component should render with the appropriate options when given valid options 1`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>zero</span></div><ul><li class=\\"selected\\"><span>zero</span></li><li class=\\"\\"><span>one</span></li><li class=\\"\\"><span>two</span></li><li class=\\"\\"><span>three</span></li><li class=\\"\\"><span>four</span></li></ul></div>"`;
+
+exports[`SelectBox component should renderer snapshot 1`] = `"<div class=\\"control select-box  \\"><div class=\\"label\\"><label></label><span>default</span></div><ul><li class=\\"selected\\"><span>default</span></li></ul></div>"`;
