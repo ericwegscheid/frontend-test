@@ -1,0 +1,20 @@
+{
+  "mainView": {
+    "title": "Restaurants",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "isFetchingRestaurants": false,
+    "restaurants": null,
+    "error": null
+  },
+  "detailView": {
+    "title": null,
+    "isFetchingRestaurantDetails": false,
+    "restaurantDetails": null
+  },
+  "filter": {
+    "isOpen": false,
+    "price": null,
+    "category": null,
+    "popularCategories": null
+  }
+}

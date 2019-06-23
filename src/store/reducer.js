@@ -1,55 +1,6 @@
-import { each, get, orderBy, slice } from 'lodash'
-
-const initialState = {
-  mainView: {
-    title: 'Restaurants',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    isFetchingRestaurants: false,
-    restaurants: null,
-    error: null,
-  },
-  detailView: {
-    title: null,
-    isFetchingRestaurantDetails: false,
-    restaurantDetails: null,
-  },
-  filter: {
-    isOpen: false,
-    price: null,
-    category: null,
-    popularCategories: null,
-  },
-}
-
-export const getPopularCategories = (restaurants, limit) => {
-  let categoriesMap = {}
-
-  each(restaurants, restaurant => {
-    each(restaurant.categories, category => {
-      const { alias, title } = category
-
-      if (!categoriesMap[alias]) {
-        categoriesMap[alias] = {
-          title: title,
-          count: 1,
-        }
-      } else {
-        categoriesMap[alias].count++
-      }
-    })
-  })
-
-  let categoriesArray = []
-
-  each(categoriesMap, (v, k) => {
-    categoriesArray.push({
-      alias: k,
-      ...v,
-    })
-  })
-
-  return slice(orderBy(categoriesArray, 'count', 'desc'), 0, limit)
-}
+import { get } from 'lodash'
+import initialState from './state'
+import { getPopularCategories } from './utils'
 
 export const reducer = (state = initialState, action) => {
   switch(action.type) {
