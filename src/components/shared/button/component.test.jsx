@@ -14,18 +14,16 @@ describe('Button component', () => {
       <Button>test</Button>
     )
 
-    debugger
-
-    expect(component).toMatchSnapshot()
+    expect(component.html()).toMatchSnapshot()
   })
 
-  it('should include passed in props in \'button\' dom element', () => {
+  it('should include passed in props in \'button\' DOM element', () => {
     renderComponent(
       <Button id="test">test</Button>
     )
 
     expect(component.prop('id')).toBe('test')
-    expect(component).toMatchSnapshot()
+    expect(component.html()).toMatchSnapshot()
   })
 
   it('should wrap child elements', () => {
@@ -34,6 +32,6 @@ describe('Button component', () => {
     )
 
     expect(component.find('span').text()).toBe('test')
-    expect(component).toMatchSnapshot()
+    expect(component.html()).toMatchSnapshot()
   })
 })
