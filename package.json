@@ -9,6 +9,7 @@
     "dev": "webpack-dev-server --env=development --hot --open",
     "build": "webpack --env=production",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "test:update": "jest --updateSnapshot",
     "clean": "rm -rf dist .token",

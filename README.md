@@ -61,6 +61,12 @@ After running this command, open Chrome, enter `chrome://inspect` in the address
 
 > NOTE: It will NOT stop on a break point if you DO NOT add a `debugger` statement in your code.
 
+It is also quite useful to always have your test runner watch for code changes. Run the command below to re-run tests any time you save a code change.
+
+```shell
+npm run test:watch
+```
+
 Each unit test uses snapshots to ensure the components DOM structure is correct. In the development process it may be necessary to make updates to the DOM structure of certain components, so it will be necessary to update these snapshots. To do this, ensure your component is rendering as expected then run the following command.
 
 ```shell
