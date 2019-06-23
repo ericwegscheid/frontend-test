@@ -25,7 +25,7 @@ git clone https://github.com/ericwegscheid/frontend-test && cd frontend-test && 
 
 ### Build and Run Application
 
-> PRO TIP: please kill any process that may already be running on port 9000 prior to running.
+> PRO TIP! please kill any process that may already be running on port 9000 prior to running.
 
 ```shell
 npm run dev
@@ -43,38 +43,29 @@ After running the command above your default web browser should automatically op
 
 You're all set!
 
-### Testing
+### Run Unit Tests
 
-Test frameworks used:
-* [Jest](https://jestjs.io)
-* [Enzyme](https://airbnb.io/enzyme/)
-
-#### Running Unit Tests
+This project uses [Jest](https://jestjs.io) and [Enzyme](https://airbnb.io/enzyme/) for running unit tests. To run the existing tests simply input the following command in your terminal at the root directory of the project.
 
 ```shell
 npm run test
 ```
 
-#### Debugging Unit Tests
-
-> For details on how this works please see the [documentation](https://nodejs.org/de/docs/guides/debugging-getting-started/)
-
-I recommend just using [Chrome's DevTools](https://developers.google.com/web/tools/chrome-devtools/).
+Often it is helpful to be able to debug your tests as you are developing, which can be done quite easily using [Chrome's DevTools](https://developers.google.com/web/tools/chrome-devtools/).Add a `debugger` statement wherever you whish to begin debugging, in either a componet.test.jsx or component.jsx file, then run the following command.
 
 ```shell
 npm run test:debug
 ```
 
-After running this command, open Chrome, enter `chrome://inspect` in the address bar, then you should see your application running under 'Remote Targets.' Click 'inspect', this will open your program in the Chrome's debugger. NOTE - It will not land on a break poing if you do not add a `debugger` statement in your code, either in any of your component.test.jsx or component.jsx files.
+After running this command, open Chrome, enter `chrome://inspect` in the address bar, then you should see your application running under 'Remote Targets.' Click 'inspect', this will open your code in the Chrome's debugger.
 
-#### Updating Test Snapshots
+> NOTE: It will NOT stop on a break point if you DO NOT add a `debugger` statement in your code.
 
-After making modifications to the dom during development you may need to update your snapshots from time to time. Ensure that the dom is rendering as expected then run the following command.
+Each unit test uses snapshots to ensure the components DOM structure is correct. In the development process it may be necessary to make updates to the DOM structure of certain components, so it will be necessary to update these snapshots. To do this, ensure your component is rendering as expected then run the following command.
 
 ```shell
 npm run test:update
 ```
-
 
 ### For Production
 
@@ -89,7 +80,7 @@ npm run build
 _Please stay tuned, there is more to come!_
 
 * Implement Restaurant Details Page
-* Implement Unit Tests (in the real world I'd strive to be as TTD as possible, but for the sake of expediting the completion of this assessment I've opted to hammer out a good portion of the front-end first)
+* Implementing Unit Tests (in the real world I'd strive to be as TTD as possible, but for the sake of expediting the completion of this assessment I've opted to hammer out a good portion of the front-end first)
 * Update UI to support mobile
 * Implement Component Stories With [Storybook](https://storybook.js.org)
 * Polish UI With Subtle Animations
