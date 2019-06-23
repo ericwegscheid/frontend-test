@@ -1,4 +1,4 @@
-import { times } from 'lodash'
+import { clamp, times } from 'lodash'
 import React from 'react'
 import './styles'
 
@@ -21,7 +21,7 @@ export const Star = (props) => {
 }
 
 export const StarRating = (props) => {
-  const { rating } = props
+  const rating = clamp(props.rating, 0, 5)
   const fullStars = parseInt(rating)
   const hasHalfStar = !!(rating % 1)
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
