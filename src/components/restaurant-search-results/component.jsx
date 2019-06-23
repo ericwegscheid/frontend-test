@@ -1,4 +1,4 @@
-import { debounce, map } from 'lodash'
+import { debounce, map, slice } from 'lodash'
 import React, { Component } from 'react'
 import { Filter } from '../filter'
 import { Restaurant } from '../restaurant'
@@ -11,6 +11,7 @@ export class RestaurantSearchResultsComponent extends Component {
 
     this.state = {
       title: props.title,
+      visibleRows: 2,
     }
 
     this.debouncedSetColumns = debounce(this.setColumns.bind(this), 50)
@@ -69,16 +70,28 @@ export class RestaurantSearchResultsComponent extends Component {
   }
 
   onClickLoadMore() {
-    console.log('load more')
+    this.setState(state => ({
+      visibleRows: state.visibleRows + 2,
+    }))
+  }
+
+  scroll() {
+    if (window.pageYOffset <= 0) {
+      clearInterval(this.scrollInterval)
+    }
+
+    window.scroll(0, window.pageYOffset - 50)
+  }
+
+  onClickBackToTop() {
+    this.scrollInterval = setInterval(this.scroll.bind(this), 5)
   }
 
   render() {
     const { restaurants } = this.props
-    const { columns, title } = this.state
+    const { columns, title, visibleRows } = this.state
 
-    if (!restaurants) {
-      return null
-    }
+    if (!restaurants) return null
 
     const loadMoreButtonStyles = {
       width: '25%',
@@ -86,11 +99,15 @@ export class RestaurantSearchResultsComponent extends Component {
       margin: '0 auto',
     }
 
+    const columnCount = this.numbers[columns]
+    const visibleRestaurants = slice(restaurants, 0, columnCount * visibleRows)
+    const noMore = visibleRows * columnCount > visibleRestaurants.length
+
     return <div className="restaurant-search-results">
       <h2 className="title">{title}</h2>
       <div className={`restaurants ${columns}-column`}>
         {
-          map(restaurants, restaurant => (
+          map(visibleRestaurants, restaurant => (
             <Restaurant
               key={restaurant.id}
               restaurant={restaurant}
@@ -101,10 +118,18 @@ export class RestaurantSearchResultsComponent extends Component {
       </div>
       <Button
         className="secondary"
-        onClick={this.onClickLoadMore.bind(this)}
+        onClick={
+          noMore ?
+            this.onClickBackToTop.bind(this) :
+            this.onClickLoadMore.bind(this)
+        }
         style={loadMoreButtonStyles}
       >
-        Load More
+        {
+          noMore ?
+            'Back To Top' :
+            'Load More'
+        }
       </Button>
     </div>
   }
