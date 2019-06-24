@@ -3,6 +3,8 @@
 .filter {
   height: 58px;
   padding-top: 21px;
+  display: flex;
+  justify-content: flex-start;
 
   > label {
     color: @gray3;
@@ -11,10 +13,16 @@
     margin-right: 24px;
     height: 31px;
     line-height: 31px;
+    white-space: nowrap;
   }
 
-  > * {
-    float: left;
+  button {
+    margin-left: auto;
+    width: 10%;
+
+    .responsive(@mediumView, {
+      width: 20%;
+    })
   }
 
   &.disabled > label {

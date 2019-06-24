@@ -23,11 +23,10 @@ h1, h2, h3, h4, h5, h6 {
   height: 32px;
   border-bottom: 1px solid @gray5;
   margin-right: 32px;
-  display: inline-block;
+  display: flex;
   cursor: pointer;
 
   > * {
-    float: left;
     margin-top: 8px;
   }
 
@@ -36,6 +35,11 @@ h1, h2, h3, h4, h5, h6 {
     height: 18px;
     line-height: 18px;
     cursor: pointer;
+  }
+
+  label,
+  .label span {
+    white-space: nowrap;
   }
 
   &.disabled {

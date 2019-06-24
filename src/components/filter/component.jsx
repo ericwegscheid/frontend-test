@@ -95,11 +95,6 @@ export class FilterComponent extends Component {
     const categoryOptions = this.getCategoryOptions()
     const defaultCategory = categoryOptions[0]
 
-    const clearButtonStyles = {
-      float: 'right',
-      width: '10%',
-    }
-
     const hasNoFilter =
       (!category || category === 'all') &&
       (!price || price === 'all') &&
@@ -130,7 +125,6 @@ export class FilterComponent extends Component {
       <Button
         className={`secondary small ${isDisabled || hasNoFilter ? 'disabled' : ''}`}
         onClick={this.onClickClearAll.bind(this)}
-        style={clearButtonStyles}
       >
         CLEAR ALL
       </Button>

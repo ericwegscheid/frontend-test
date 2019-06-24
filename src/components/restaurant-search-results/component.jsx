@@ -116,21 +116,24 @@ export class RestaurantSearchResultsComponent extends Component {
           ))
         }
       </div>
-      <Button
-        className="secondary"
-        onClick={
-          noMore ?
-            this.onClickBackToTop.bind(this) :
-            this.onClickLoadMore.bind(this)
-        }
-        style={loadMoreButtonStyles}
-      >
-        {
-          noMore ?
-            'Back To Top' :
-            'Load More'
-        }
-      </Button>
+      {
+        window.pageYOffset === 0 && noMore ? null :
+          <Button
+            className="secondary"
+            onClick={
+              noMore ?
+                this.onClickBackToTop.bind(this) :
+                this.onClickLoadMore.bind(this)
+            }
+            style={loadMoreButtonStyles}
+          >
+            {
+              noMore ?
+                'Back To Top' :
+                'Load More'
+            }
+          </Button>
+      }
     </div>
   }
 }
