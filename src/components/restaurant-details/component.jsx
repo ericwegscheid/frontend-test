@@ -32,7 +32,7 @@ export class RestaurantDetailsComponent extends Component {
       </Row>
       <Row className="borders">
         <div className="location">
-          <div className="map"></div>
+          <div className="map"><div className="map-placeholder"></div></div>
           <div className="images">
             {
               this.props.isFetchingRestaurantDetails ?

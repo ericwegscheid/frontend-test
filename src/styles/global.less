@@ -90,3 +90,38 @@
   border-color: @color;
   border-width: 0 0 @borderWidth @borderWidth;
 }
+
+.triangleDown(@width, @color) {
+    @w: @width / 2;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: @w solid transparent;
+    border-right: @w solid transparent;
+    border-top: @w * 1.5 solid @color;
+    margin-top: @w * 1.2;
+    z-index: 0;
+}
+
+.pin(@width, @color) {
+  .circle(@width);
+  position: relative;
+  background-color: @color;
+
+  &:before {
+    @w: @width / 4.25;
+    content: '';
+    position: absolute;
+    left: @w;
+    top: @w;
+    background-color: @white;
+    z-index: 1;
+    .circle(@width * 0.5);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    .triangleDown(@width, @color);
+  }
+}
