@@ -1,0 +1,44 @@
+@import '../../styles/global.less';
+
+.restaurant-details .row .row-content {
+  > .title {
+    margin-bottom: 16px;
+    font-size: 54px;
+    line-height: 64px;
+    max-width: 748px;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin: 23px 0 45px;
+  }
+
+  .category-price,
+  .is-open {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: normal;
+    height: 29px;
+    line-height: 32px;
+    color: @gray4;
+  }
+
+  .is-open {
+    padding-left: 30px;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      background: @brightGreen;
+      .circle(22px);
+
+      &.closed {
+        background: @brightRed;
+      }
+    }
+  }
+}
