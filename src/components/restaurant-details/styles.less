@@ -41,4 +41,39 @@
       }
     }
   }
+
+  .location {
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+      margin-top: 48px;
+      margin-bottom: 15px;
+      margin-right: 2%;
+      height: 228px;
+      background-color: @gray6;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .map {
+      flex-grow: 2;
+    }
+
+    .pic {
+      flex-grow: 1;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  .address {
+    height: 28px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 28px;
+    margin-bottom: 48px;
+  }
 }

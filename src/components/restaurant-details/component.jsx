@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import { get, map, slice } from 'lodash'
 import React, { Component } from 'react'
 import { Oops, Row, Spinner, StarRating } from '../shared'
 import './styles'
@@ -28,7 +28,19 @@ export class RestaurantDetailsComponent extends Component {
         </div>
       </Row>
       <Row className="borders">
-        <p>{get(location, 'display_address', []).join(' ')}</p>
+        <div className="location">
+          <div className="map"></div>
+          {
+            map(slice(photos, 0, 2), v => (
+              <div
+                key={v}
+                className={`pic ${v ? '' : 'default'}`}
+                style={{ backgroundImage: `url(${v})` }}
+              ></div>
+            ))
+          }
+        </div>
+        <p className="address">{get(location, 'display_address', []).join(' ')}</p>
       </Row>
       {
         this.props.isFetchingRestaurantDetails ?
