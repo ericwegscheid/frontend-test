@@ -1,79 +1,52 @@
 @import '../../styles/global.less';
 
-.restaurant-details .row .row-content {
-  > .title {
-    margin-bottom: 16px;
-    font-size: 54px;
-    line-height: 64px;
-    max-width: 748px;
+.restaurant-review {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid @gray7;
+  padding-bottom: 73px;
+  margin-top: 80px;
+
+  &:first-child {
+    margin-top: 48px;
   }
 
-  .details {
-    display: flex;
-    justify-content: space-between;
-    margin: 23px 0 45px;
+  &:last-child {
+    border-bottom: none;
   }
 
-  .category-price,
-  .is-open {
-    display: inline-block;
-    font-size: 22px;
-    font-weight: normal;
-    height: 29px;
-    line-height: 32px;
-    color: @gray4;
-  }
-
-  .is-open {
-    padding-left: 30px;
-    position: relative;
-
-    &:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 6px;
-      background: @brightGreen;
-      .circle(22px);
-
-      &.closed {
-        background: @brightRed;
-      }
-    }
-  }
-
-  .location {
-    display: flex;
-    justify-content: space-between;
-
-    > * {
-      margin-top: 48px;
-      margin-bottom: 15px;
-      margin-right: 2%;
-      height: 228px;
-      background-color: @gray6;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-
-    .map {
-      flex-grow: 2;
-    }
+  .user {
+    width: 25%;
+    margin-right: 2%;
 
     .pic {
-      flex-grow: 1;
+      width: 80px;
+      height: 80px;
+      margin-right: 32px;
+      float: left;
       background-position: center;
       background-size: cover;
+      background-color: @gray6;
+    }
+
+    > p {
+      height: 24px;
+      line-height: 24px;
+      margin: 0;
+    }
+
+    .name {
+      color: @black;
+      font-size: 22px;
+    }
+
+    .date {
+      color: @gray2;
+      font-size: 16px;
     }
   }
 
-  .address {
-    height: 28px;
-    font-size: 20px;
-    letter-spacing: 1px;
-    line-height: 28px;
-    margin-bottom: 48px;
+  .review {
+    width: 73%;
   }
 }

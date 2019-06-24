@@ -1,5 +1,6 @@
 import { get, map, slice } from 'lodash'
 import React, { Component } from 'react'
+import { RestaurantReview } from '../restaurant-review'
 import { Oops, Row, Spinner, StarRating } from '../shared'
 import './styles'
 
@@ -16,6 +17,8 @@ export class RestaurantDetailsComponent extends Component {
   render() {
     const { category, error, is_closed, location, name, price, rating } = this.props
     const photos = get(this.props, 'restaurantDetails.photos', [])
+    const totalReviews = get(this.props, 'restaurantReviews.total', 0)
+    const reviews = get(this.props, 'restaurantReviews.reviews', [])
 
     return <div className="restaurant-details">
       <Row>
@@ -55,7 +58,14 @@ export class RestaurantDetailsComponent extends Component {
           error ?
             <Oops /> :
             <Row>
-              <p>{JSON.stringify(this.props.restaurantReviews)}</p>
+              <p className="total-reviews">{`${totalReviews} Reviews`}</p>
+              <div className="reviews-list">
+                {
+                  map(reviews, (v) => (
+                    <RestaurantReview key={v.id} review={v} />
+                  ))
+                }
+              </div>
             </Row>
       }
     </div>
