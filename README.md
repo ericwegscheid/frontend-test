@@ -98,3 +98,7 @@ _Please stay tuned, there is more to come!_
   - Scroll To Top
 * Update App To Use [Graph QL](https://www.yelp.com/developers/graphql/guides/intro) (Initially opted to use Yelp's Fusion API)
 
+### Optimizations
+* Instead of assigning API responses directly to the state, pull out only what is needed from the API response and apply that to state.
+
+
