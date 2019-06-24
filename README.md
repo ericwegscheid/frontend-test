@@ -88,6 +88,7 @@ _Please stay tuned, there is more to come!_
 * Aside from mobile support and map on details component, the site is feature complete, including searching, filtering, display restaurant details and reviews.
   - At this point I would being addressing any areas for optimization or refactoring
   - make it work, make it right, make it better
+* Create Project Demo
 * Implementing Unit Tests (in the real world I'd strive to be as TTD as possible, but for the sake of expediting the completion of this assessment I've opted to hammer out a good portion of the front-end first)
   - Components and their unit tests are complete for `src/components/shared/*`
 * Update UI to support mobile
