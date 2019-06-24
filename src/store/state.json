@@ -24,7 +24,8 @@
     "name": null,
     "price": null,
     "rating": null,
-    "restaurantDetails": null
+    "restaurantDetails": null,
+    "restaurantReviews": null
   },
   "filter": {
     "category": null,

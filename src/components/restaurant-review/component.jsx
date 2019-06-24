@@ -3,21 +3,16 @@ import React, { Component } from 'react'
 import { Oops, Row, Spinner, StarRating } from '../shared'
 import './styles'
 
-export class RestaurantDetailsComponent extends Component {
+export class RestaurantReviewComponent extends Component {
   constructor(props) {
     super(props)
-
-    const { fetchRestaurantDetails, fetchRestaurantReviews, id } = this.props
-
-    fetchRestaurantDetails(id)
-    fetchRestaurantReviews(id)
   }
 
   render() {
     const { category, error, is_closed, location, name, price, rating } = this.props
-    const photos = get(this.props, 'restaurantDetails.photos', [])
+    const photos = get(this.props, 'restaurantReviews.photos', [])
 
-    return <div className="restaurant-details">
+    return <div className="restaurant-review">
       <Row>
         <h1 className="title">{name}</h1>
         <StarRating rating={rating} />
@@ -33,19 +28,15 @@ export class RestaurantDetailsComponent extends Component {
       <Row className="borders">
         <div className="location">
           <div className="map"></div>
-          <div className="images">
-            {
-              this.props.isFetchingRestaurantDetails ?
-                <Spinner /> :
-                map(slice(photos, 0, 2), v => (
-                  <div
-                    key={v}
-                    className={`pic ${v ? '' : 'default'}`}
-                    style={{ backgroundImage: `url(${v})` }}
-                  ></div>
-                ))
-            }
-          </div>
+          {
+            map(slice(photos, 0, 2), v => (
+              <div
+                key={v}
+                className={`pic ${v ? '' : 'default'}`}
+                style={{ backgroundImage: `url(${v})` }}
+              ></div>
+            ))
+          }
         </div>
         <p className="address">{get(location, 'display_address', []).join(' ')}</p>
       </Row>
@@ -55,7 +46,7 @@ export class RestaurantDetailsComponent extends Component {
           error ?
             <Oops /> :
             <Row>
-              <p>{JSON.stringify(this.props.restaurantReviews)}</p>
+              <p>get the reviews</p>
             </Row>
       }
     </div>

@@ -21,7 +21,7 @@
     font-weight: normal;
     height: 29px;
     line-height: 32px;
-    color: @gray2;
+    color: @gray4;
   }
 
   .is-open {
@@ -47,36 +47,25 @@
     justify-content: space-between;
 
     > * {
-      flex-grow: 1;
       margin-top: 48px;
       margin-bottom: 15px;
+      margin-right: 2%;
       height: 228px;
+      background-color: @gray6;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
 
     .map {
-      background-color: @gray6;
-      margin-right: 2%;
+      flex-grow: 2;
     }
 
-    .images {
-      display: flex;
-      margin-right: 0;
-
-      .pic {
-        flex-grow: 1;
-        margin-right: 4%;
-        background-position: center;
-        background-size: cover;
-        background-color: @gray6;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-
-      .spinner {
-        margin: 60px auto;
-      }
+    .pic {
+      flex-grow: 1;
+      background-position: center;
+      background-size: cover;
     }
   }
 
@@ -86,6 +75,5 @@
     letter-spacing: 1px;
     line-height: 28px;
     margin-bottom: 48px;
-    color: @black;
   }
 }

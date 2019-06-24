@@ -97,6 +97,34 @@ export const reducer = (state = initialState, action) => {
         restaurantDetails: action.payload,
       },
     }
+  case 'FETCH_RESTAURANT_REVIEWS':
+    return {
+      ...state,
+      detailsView: {
+        ...state.detailsView,
+        error: null,
+        isFetchingRestaurantReviews: true,
+      },
+    }
+  case 'RECEIVED_RESTAURANT_REVIEWS':
+    return {
+      ...state,
+      detailsView: {
+        ...state.detailsView,
+        restaurantReviews: get(action.payload, 'data', {}),
+        isFetchingRestaurantReviews: false,
+      },
+    }
+  case 'FETCH_RESTAURANT_REVIEWS_ERROR':
+    return {
+      ...state,
+      detailsView: {
+        ...state.detailsView,
+        error: action.payload,
+        isFetchingRestaurantReviews: false,
+        restaurantReviews: action.payload,
+      },
+    }
   default:
     return state
   }

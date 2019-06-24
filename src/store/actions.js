@@ -105,3 +105,28 @@ export function fetchRestaurantDetails(id) {
     })
   }
 }
+
+export function fetchRestaurantReviews(id) {
+  const request = axios({
+    method: 'get',
+    url: `${businessesEndpoint}/${id}/reviews`,
+  })
+
+  return dispatch => {
+    dispatch({
+      type: 'FETCH_RESTAURANT_REVIEWS',
+    })
+
+    return request.then(data => {
+      dispatch({
+        type: 'RECEIVED_RESTAURANT_REVIEWS',
+        payload: data,
+      })
+    }).catch(error => {
+      dispatch({
+        type: 'FETCH_RESTAURANT_REVIEWS_ERROR',
+        payload: error,
+      })
+    })
+  }
+}
