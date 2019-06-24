@@ -17,12 +17,12 @@ describe('Row component', () => {
     expect(component.html()).toMatchSnapshot()
   })
 
-  it('should include passed in props in \'button\' DOM element', () => {
+  it('should include className in props in \'button\' DOM element', () => {
     renderComponent(
-      <Row id="test">test</Row>
+      <Row className="test">test</Row>
     )
 
-    expect(component.prop('id')).toBe('test')
+    expect(component.prop('className')).toBe('row test')
     expect(component.html()).toMatchSnapshot()
   })
 
