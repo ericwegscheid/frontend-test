@@ -16,7 +16,7 @@ export function formatFilter(filter) {
   }
 }
 
-export function getUrl(filter) {
+export function getSearchUrl(filter) {
   return [
     `${businessesEndpoint}/search?`,
     map(
@@ -50,7 +50,7 @@ export function applyFilter(filter) {
 export function fetchRestaurants(filter) {
   const request = axios({
     method: 'get',
-    url: getUrl(filter),
+    url: getSearchUrl(filter),
   })
 
   return dispatch => {
@@ -68,6 +68,15 @@ export function fetchRestaurants(filter) {
         type: 'FETCH_RESTAURANTS_ERROR',
         payload: error,
       })
+    })
+  }
+}
+
+export function setRestaurantDetails(restaurant) {
+  return dispatch => {
+    dispatch({
+      type: 'SET_RESTAURANT_DETAILS',
+      payload: restaurant,
     })
   }
 }

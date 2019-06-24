@@ -1,15 +1,16 @@
 import { each, findIndex } from 'lodash'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Button, StarRating } from '../shared'
 import './styles'
 
 export class RestaurantComponent extends Component {
   constructor(props) {
     super(props)
-  }
 
-  onClickLearnMore() {
-    console.log('learn more')
+    this.state = {
+      category: this.getCategory(),
+    }
   }
 
   getCategory() {
@@ -33,30 +34,45 @@ export class RestaurantComponent extends Component {
     return category
   }
 
+  onClickRestaurant(restaurant) {
+    this.props.setRestaurantDetails(restaurant)
+  }
+
   render() {
-    const { image_url, is_closed, name, price, rating } = this.props.restaurant
+    const { category } = this.state
+    const { alias, id, image_url, is_closed, name, price, rating } = this.props.restaurant
+
+    // include relevant category
+    const restaurant = {
+      ...this.props.restaurant,
+      category,
+    }
 
     return <div className="restaurant">
-      <div
-        className={`thumb ${image_url ? '' : 'default'}`}
-        onClick={this.onClickLearnMore.bind(this)}
-        style={{ backgroundImage: `url(${image_url})` }}
-      ></div>
+      <Link to={`/${alias}`}>
+        <div
+          className={`thumb ${image_url ? '' : 'default'}`}
+          onClick={this.onClickRestaurant.bind(this, restaurant)}
+          style={{ backgroundImage: `url(${image_url})` }}
+        ></div>
+      </Link>
       <h4>{name}</h4>
       <StarRating rating={rating} />
       <div className="details">
         <span className="category-price">
-          {this.getCategory()} &bull; {price}
+          {category} &bull; {price}
         </span>
         <span className={`is-open ${is_closed ? 'closed' : ''}`}>
           {is_closed ? 'Closed' : 'Open Now'}
         </span>
       </div>
-      <Button
-        onClick={this.onClickLearnMore.bind(this)}
-      >
-        Learn More
-      </Button>
+      <Link to={`/${alias}`}>
+        <Button
+          onClick={this.onClickRestaurant.bind(this, restaurant)}
+        >
+          Learn More
+        </Button>
+      </Link>
     </div>
   }
 }

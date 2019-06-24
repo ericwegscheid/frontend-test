@@ -10,7 +10,7 @@ export const reducer = (state = initialState, action) => {
       filter: {
         ...state.filter,
         popularCategories: getPopularCategories(
-          get(state, 'mainView.restaurants'),
+          get(state, 'mainView.restaurants', []),
           action.payload,
         ),
       },
@@ -28,8 +28,8 @@ export const reducer = (state = initialState, action) => {
       ...state,
       mainView: {
         ...state.mainView,
-        isFetchingRestaurants: true,
         error: null,
+        isFetchingRestaurants: true,
       },
     }
   case 'RECEIVED_RESTAURANTS':
@@ -37,8 +37,8 @@ export const reducer = (state = initialState, action) => {
       ...state,
       mainView: {
         ...state.mainView,
-        restaurants: get(action, 'payload.data.businesses'),
         isFetchingRestaurants: false,
+        restaurants: get(action, 'payload.data.businesses'),
       },
     }
   case 'FETCH_RESTAURANTS_ERROR':
@@ -46,36 +46,55 @@ export const reducer = (state = initialState, action) => {
       ...state,
       mainView: {
         ...state.mainView,
-        restaurants: null,
-        isFetchingRestaurants: false,
         error: action.payload,
+        isFetchingRestaurants: false,
+        restaurants: null,
       },
     }
+  case 'SET_RESTAURANT_DETAILS': {
+    const { category, coordinates, id, is_closed, location, name, price, rating } = action.payload
+
+    return {
+      ...state,
+      detailsView: {
+        ...state.detailsView,
+        category,
+        coordinates,
+        id,
+        is_closed,
+        location,
+        name,
+        price,
+        rating,
+      },
+    }
+  }
   case 'FETCH_RESTAURANT_DETAILS':
     return {
       ...state,
-      detailView: {
-        ...state.detailView,
+      detailsView: {
+        ...state.detailsView,
+        error: null,
         isFetchingRestaurantDetails: true,
       },
     }
   case 'RECEIVED_RESTAURANT_DETAILS':
     return {
       ...state,
-      detailView: {
-        ...state.detailView,
-        restaurantDetails: action.payload,
+      detailsView: {
+        ...state.detailsView,
+        restaurantDetails: get(action.payload, 'data', {}),
         isFetchingRestaurantDetails: false,
       },
     }
   case 'FETCH_RESTAURANT_DETAILS_ERROR':
     return {
       ...state,
-      detailView: {
-        ...state.detailView,
-        restaurantDetails: action.payload,
-        isFetchingRestaurantDetails: false,
+      detailsView: {
+        ...state.detailsView,
         error: action.payload,
+        isFetchingRestaurantDetails: false,
+        restaurantDetails: action.payload,
       },
     }
   default:

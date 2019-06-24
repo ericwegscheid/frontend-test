@@ -7,21 +7,29 @@
     "xsmall": 480
   },
   "mainView": {
-    "title": "Restaurants",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "error": null,
     "isFetchingRestaurants": false,
     "restaurants": null,
-    "error": null
+    "title": "Restaurants"
   },
-  "detailView": {
-    "title": null,
+  "detailsView": {
+    "category": null,
+    "coordinates": null,
+    "error": null,
+    "id": null,
+    "is_closed": null,
     "isFetchingRestaurantDetails": false,
+    "location": null,
+    "name": null,
+    "price": null,
+    "rating": null,
     "restaurantDetails": null
   },
   "filter": {
-    "isOpen": false,
-    "price": null,
     "category": null,
-    "popularCategories": null
+    "isOpen": false,
+    "popularCategories": null,
+    "price": null
   }
 }

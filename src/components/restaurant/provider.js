@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { setRestaurantDetails } from '../../store'
 import { RestaurantComponent } from './component'
 
 const mapStateToProps = state => ({
@@ -6,4 +8,10 @@ const mapStateToProps = state => ({
   popularCategories: state.filter.popularCategories,
 })
 
-export const Restaurant = connect(mapStateToProps)(RestaurantComponent)
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    setRestaurantDetails,
+  }, dispatch)
+}
+
+export const Restaurant = connect(mapStateToProps, mapDispatchToProps)(RestaurantComponent)
