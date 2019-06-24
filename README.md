@@ -85,11 +85,15 @@ npm run build
 
 _Please stay tuned, there is more to come!_
 
-* Implement Restaurant Details Page
+* Aside from mobile support and map on details component, the site is feature complete, including searching, filtering, display restaurant details and reviews.
+  - At this point I would being addressing any areas for optimization or refactoring
+  - make it work, make it right, make it better
 * Implementing Unit Tests (in the real world I'd strive to be as TTD as possible, but for the sake of expediting the completion of this assessment I've opted to hammer out a good portion of the front-end first)
   - Components and their unit tests are complete for `src/components/shared/*`
 * Update UI to support mobile
+  - Not fully addressed, only columns of restaurant search results are totally responsive
 * Implement Component Stories With [Storybook](https://storybook.js.org)
 * Polish UI With Subtle Animations
+  - Scroll To Top
 * Update App To Use [Graph QL](https://www.yelp.com/developers/graphql/guides/intro) (Initially opted to use Yelp's Fusion API)
 
