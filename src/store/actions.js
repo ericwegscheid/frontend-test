@@ -3,24 +3,17 @@ import { get, isNil, map } from 'lodash'
 
 const businessesEndpoint = 'http://localhost:9000/api/v3/businesses'
 
-const query = {
-  term: 'restaurants',
-  location: 'Las Vegas',
-}
-
-export function formatFilter(filter) {
-  return {
-    open_now: get(filter, 'isOpen'),
-    price: get(filter, 'price.key'),
-    categories: get(filter, 'category.key'),
-  }
-}
-
-export function getSearchUrl(filter) {
+// maps filter object then converts to query string
+export function getFilterParams(filter) {
   return [
-    `${businessesEndpoint}/search?`,
     map(
-      { ...query, ...formatFilter(filter) },
+      {
+        term: 'restaurants',
+        location: 'Las Vegas',
+        open_now: get(filter, 'isOpen'),
+        price: get(filter, 'price.key'),
+        categories: get(filter, 'category.key'),
+      },
       (v, k) => isNil(v) ? '' : `${k}=${v}`).join('&'),
   ].join('')
 }
@@ -50,7 +43,7 @@ export function applyFilter(filter) {
 export function fetchRestaurants(filter) {
   const request = axios({
     method: 'get',
-    url: getSearchUrl(filter),
+    url: `${businessesEndpoint}/search?${getFilterParams(filter)}`,
   })
 
   return dispatch => {
