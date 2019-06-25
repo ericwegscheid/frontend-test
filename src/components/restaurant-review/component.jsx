@@ -6,6 +6,12 @@ import './styles'
 export const RestaurantReview = (props) => {
   const { rating, text, time_created, user } = props.review
   const { image_url, name } = user
+  const date = new Date(time_created)
+  const createdDate = [
+    date.getMonth(),
+    date.getDate(),
+    date.getYear(),
+  ].join('/')
 
   return (
     <div className="restaurant-review">
@@ -15,7 +21,7 @@ export const RestaurantReview = (props) => {
           style={{ backgroundImage: `url(${image_url})` }}
         ></div>
         <p className="name">{name}</p>
-        <p className="date">{time_created}</p>
+        <p className="date">{createdDate}</p>
       </div>
       <div className="review">
         <StarRating rating={rating} />
