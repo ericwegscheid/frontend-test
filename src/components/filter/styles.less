@@ -28,4 +28,15 @@
   &.disabled > label {
     color: @gray5;
   }
+
+  // to keep drop down animations smooth
+  // and sinse these menus always have
+  // a fixed number of items in them
+  .category.open ul {
+    max-height: 419px;
+  }
+
+  .price.open ul {
+    max-height: 209px;
+  }
 }

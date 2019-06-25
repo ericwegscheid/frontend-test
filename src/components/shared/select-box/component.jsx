@@ -9,6 +9,7 @@ export class SelectBox extends Component {
     const options =  this.scrubOptions(props.options)
 
     this.state = {
+      className: props.className,
       isDisabled: props.isDisabled,
       isOpen: false,
       options: options,
@@ -74,10 +75,11 @@ export class SelectBox extends Component {
   }
 
   render() {
-    const { isDisabled, isOpen, options, selected } = this.state
+    const { className, isDisabled, isOpen, options, selected } = this.state
 
     const classNames = [
       'control select-box',
+      isString(className) ? className : '',
       isDisabled ? 'disabled' : '',
       isOpen ? 'open' : '',
     ].join(' ')

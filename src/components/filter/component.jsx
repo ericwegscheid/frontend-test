@@ -109,6 +109,7 @@ export class FilterComponent extends Component {
         onClick={this.onClickOpenNow.bind(this)}
       />
       <SelectBox
+        className="price"
         label="Price"
         isDisabled={isDisabled}
         options={priceOptions}
@@ -116,6 +117,7 @@ export class FilterComponent extends Component {
         selected={hasNoFilter ? defaultPrice : price || defaultPrice}
       />
       <SelectBox
+        className="category"
         label="Category"
         isDisabled={isDisabled}
         options={categoryOptions}
