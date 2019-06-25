@@ -14,6 +14,7 @@ export class RestaurantSearchResultsComponent extends Component {
       visibleRows: 2,
     }
 
+    // used to prevent excessive execution of setColumns function
     this.debouncedSetColumns = debounce(this.setColumns.bind(this), 50)
 
     // map className for columns to number
@@ -58,15 +59,11 @@ export class RestaurantSearchResultsComponent extends Component {
             width > xsmall ? small : xsmall
     ]
 
-    if ( columns !== currentColumns ) {
+    if (columns !== currentColumns) {
       this.setState({
         columns: columns,
       })
     }
-  }
-
-  onSelectRestaurant(restaurant) {
-    console.log(restaurant)
   }
 
   onClickLoadMore() {
@@ -75,7 +72,7 @@ export class RestaurantSearchResultsComponent extends Component {
     }))
   }
 
-  scroll() {
+  scrollUp() {
     if (window.pageYOffset <= 0) {
       clearInterval(this.scrollInterval)
     }
@@ -84,7 +81,7 @@ export class RestaurantSearchResultsComponent extends Component {
   }
 
   onClickBackToTop() {
-    this.scrollInterval = setInterval(this.scroll.bind(this), 5)
+    this.scrollInterval = setInterval(this.scrollUp.bind(this), 5)
   }
 
   render() {
@@ -111,11 +108,13 @@ export class RestaurantSearchResultsComponent extends Component {
             <Restaurant
               key={restaurant.id}
               restaurant={restaurant}
-              onSelect={this.onSelectRestaurant.bind(this)}
             />
           ))
         }
       </div>
+      {
+        !visibleRestaurants.length && <p className="no-results">No Restaurants Found</p>
+      }
       {
         window.pageYOffset === 0 && noMore ? null :
           <Button
