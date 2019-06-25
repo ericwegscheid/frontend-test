@@ -96,10 +96,12 @@ _Please stay tuned, there is more to come!_
 * Implement Component Stories With [Storybook](https://storybook.js.org)
 * Polish UI With Subtle Animations
   - [x] Scroll To Top animation
-  - [ ] Drop down menu animation
+  - [x] Drop down menu animation
 * Update App To Use [Graph QL](https://www.yelp.com/developers/graphql/guides/intro) (Initially opted to use Yelp's Fusion API)
 
 ### Optimizations
 * Instead of assigning API responses directly to the state, pull out only what is needed from the API response and apply that to state.
+* Store could be broken into ducks pattern to keep actions or reducers files getting too big
+
 
 
